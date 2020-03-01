@@ -1,8 +1,8 @@
 import {format} from 'date-fns'
 
 export default {
-  name: 'sampleProject',
-  title: 'Sample project',
+  name: 'project',
+  title: 'Project',
   type: 'document',
   fields: [
     {
@@ -59,6 +59,12 @@ export default {
       of: [{type: 'reference', to: {type: 'category'}}]
     },
     {
+      name: 'skills',
+      title: 'Skills',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'skill'}}]
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'projectPortableText'
@@ -67,7 +73,7 @@ export default {
       name: 'relatedProjects',
       title: 'Related projects',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'sampleProject'}}]
+      of: [{type: 'reference', to: {type: 'project'}}]
     }
   ],
   preview: {
