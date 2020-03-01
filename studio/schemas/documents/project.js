@@ -36,12 +36,12 @@ export default {
       title: 'Excerpt',
       type: 'simplePortableText'
     },
-    {
+/*     {
       name: 'members',
       title: 'Members',
       type: 'array',
       of: [{type: 'projectMember'}]
-    },
+    }, */
     {
       name: 'startedAt',
       title: 'Started at',
@@ -68,10 +68,10 @@ export default {
       type: 'boolean'
     },
     {
-      name: 'categories',
-      title: 'Categories',
+      name: 'places',
+      title: 'Places',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}]
+      of: [{type: 'reference', to: {type: 'place'}}]
     },
     {
       name: 'skills',
@@ -98,7 +98,7 @@ export default {
       slug: 'slug',
       media: 'mainImage'
     },
-    prepare({title = 'No title', publishedAt, slug = {}, media}) {
+    prepare ({title = 'No title', publishedAt, slug = {}, media}) {
       const dateSegment = format(publishedAt, 'YYYY/MM')
       const path = `/${dateSegment}/${slug.current}/`
       return {
