@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "sanity-gatsby-portfolio-web",
+  "name": "erik-hals-portfolio",
   "version": "1.0.0",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Erik Hals <post@erikhals.com>",
   "scripts": {
     "build": "gatsby build",
     "clean-cache": "gatsby clean",
