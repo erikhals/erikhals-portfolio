@@ -21,6 +21,11 @@ export default {
       }
     },
     {
+      name: 'client',
+      title: 'Client',
+      type: 'string'
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       description: 'You can use this field to schedule projects where you show them',
@@ -51,6 +56,16 @@ export default {
       name: 'mainImage',
       title: 'Main image',
       type: 'figure'
+    },
+    {
+      name: 'videoLink',
+      title: 'Video Link',
+      type: 'url'
+    },
+    {
+      title: 'Work/Life',
+      name: 'life',
+      type: 'boolean'
     },
     {
       name: 'categories',
