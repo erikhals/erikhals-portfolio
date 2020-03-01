@@ -36,7 +36,7 @@ export default {
       title: 'Excerpt',
       type: 'simplePortableText'
     },
-/*     {
+    /*     {
       name: 'members',
       title: 'Members',
       type: 'array',
