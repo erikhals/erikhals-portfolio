@@ -10,11 +10,15 @@ import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 import {responsiveTitle1} from '../components/typography.module.css'
 
 export const query = graphql`
-  query ArchivePageQuery {
+  query LifePageQuery {
     projects: allSanityProject(
       limit: 12
       sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+      filter: {
+        slug: {current: {ne: null}}
+        publishedAt: {ne: null}
+        category: {title: {eq: "Life"}}
+      }
     ) {
       edges {
         node {
@@ -26,7 +30,6 @@ export const query = graphql`
             alt
           }
           title
-          _rawExcerpt
           slug {
             current
           }
@@ -36,7 +39,7 @@ export const query = graphql`
   }
 `
 
-const ArchivePage = props => {
+const LifePage = (props) => {
   const {data, errors} = props
   if (errors) {
     return (
@@ -46,16 +49,19 @@ const ArchivePage = props => {
     )
   }
   const projectNodes =
-    data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
+    data &&
+    data.projects &&
+    mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
     <Layout>
-      <SEO title='Archive' />
+      <SEO title='Life' />
       <Container>
-        <h1 className={responsiveTitle1}>Projects</h1>
-        {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
+        <h1 className={responsiveTitle1}>Life</h1>
+        {projectNodes &&
+        projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
       </Container>
     </Layout>
   )
 }
 
-export default ArchivePage
+export default LifePage

@@ -12,7 +12,10 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
         <Link to='/'>{siteTitle}</Link>
       </div>
 
-      <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
+      <button
+        className={styles.toggleNavButton}
+        onClick={showNav ? onHideNav : onShowNav}
+      >
         <Icon symbol='hamburger' />
       </button>
 
@@ -22,7 +25,7 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
             <Link to='/work/'>Work</Link>
           </li>
           <li>
-            <Link to='/archive/'>Archive</Link>
+            <Link to='/life/'>Life</Link>
           </li>
         </ul>
       </nav>

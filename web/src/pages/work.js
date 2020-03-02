@@ -21,7 +21,11 @@ export const query = graphql`
     projects: allSanityProject(
       limit: 6
       sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}, life: {eq: false}}
+      filter: {
+        slug: {current: {ne: null}}
+        publishedAt: {ne: null}
+        category: {title: {eq: "Work"}}
+      }
     ) {
       edges {
         node {
@@ -49,19 +53,18 @@ export const query = graphql`
             alt
           }
           title
-          _rawExcerpt
           slug {
             current
           }
+          forClient
         }
       }
     }
   }
 `
 
-const WorkPage = props => {
+const WorkPage = (props) => {
   const {data, errors} = props
-
   if (errors) {
     return (
       <Layout>
@@ -73,8 +76,8 @@ const WorkPage = props => {
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
     : []
 
   if (!site) {
@@ -85,15 +88,15 @@ const WorkPage = props => {
 
   return (
     <Layout>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO
+        title={site.title}
+        description={site.description}
+        keywords={site.keywords}
+      />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         {projectNodes && (
-          <ProjectPreviewGrid
-            title='Work'
-            nodes={projectNodes}
-
-          />
+          <ProjectPreviewGrid title='Work' nodes={projectNodes} />
         )}
       </Container>
     </Layout>
