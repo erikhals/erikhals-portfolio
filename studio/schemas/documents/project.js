@@ -63,9 +63,10 @@ export default {
       type: 'url'
     },
     {
-      title: 'Work/Life',
-      name: 'life',
-      type: 'boolean'
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: {type: 'category'}
     },
     {
       name: 'places',

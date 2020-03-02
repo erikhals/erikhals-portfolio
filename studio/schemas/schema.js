@@ -10,6 +10,7 @@ import skill from './documents/skill'
 import person from './documents/person'
 import project from './documents/project'
 import siteSettings from './documents/siteSettings'
+import category from './documents/category'
 
 // Object types
 import bioPortableText from './objects/bioPortableText'
@@ -38,6 +39,7 @@ export default createSchema({
     skill,
     person,
     project,
-    siteSettings
+    siteSettings,
+    category
   ])
 })
