@@ -1,10 +1,10 @@
-import MdStore from 'react-icons/lib/md/store'
+import MdComputer from 'react-icons/lib/md/computer'
 
 export default {
-  name: 'place',
+  name: 'software',
   type: 'document',
-  title: 'Place',
-  icon: MdStore,
+  title: 'Software',
+  icon: MdComputer,
   fields: [
     {
       name: 'title',
@@ -15,11 +15,6 @@ export default {
       name: 'logo',
       type: 'image',
       title: 'Logo'
-    },
-    {
-      name: 'description',
-      type: 'text',
-      title: 'Description'
     }
   ]
 }
