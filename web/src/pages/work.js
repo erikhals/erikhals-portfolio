@@ -76,8 +76,8 @@ const WorkPage = (props) => {
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
+      .filter(filterOutDocsWithoutSlugs)
+      .filter(filterOutDocsPublishedInTheFuture)
     : []
 
   if (!site) {
