@@ -85,6 +85,12 @@ export default {
       of: [{type: 'reference', to: {type: 'skill'}}]
     },
     {
+      name: 'softwares',
+      title: 'Softwares',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'software'}}]
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'projectPortableText'
