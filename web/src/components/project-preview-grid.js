@@ -14,8 +14,8 @@ function ProjectPreviewGrid (props) {
           props.nodes.map(node => {
             left = !left
             return (
-              <li key={node.id} className={left ? 'left' : 'right'}>
-                <ProjectPreview {...node} />
+              <li key={node.id} >
+                <ProjectPreview left={left} {...node} />
               </li>
             )})}
       </ul>
