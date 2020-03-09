@@ -33,6 +33,9 @@ export const query = graphql`
           slug {
             current
           }
+          skills {
+            title
+          }
         }
       }
     }

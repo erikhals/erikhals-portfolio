@@ -10,7 +10,7 @@ function ProjectPreview (props) {
   console.log(props)
   return (
     <Link className={styles.root} to={`/project/${props.slug.current}`}>
-      <div className={styles.leadMediaThumb}>
+      <div className={props.left ? styles.leadMediaThumb : styles.leadMediaThumbRight}>
         {props.mainImage &&
         props.mainImage.asset && (
           <img
@@ -22,7 +22,8 @@ function ProjectPreview (props) {
           />
         )}
       </div>
-      <div><h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
+      <div className={props.left ? styles.skillBlockRight : styles.skillBlockLeft}>{props.skills.map(skill => <div>{skill.title}</div>)}</div>
+      <div className={props.left ? styles.titleBlockLeft : styles.titleBlockRight}><h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
         {props.forClient && (
           <div className={styles.excerpt}>{props.forClient}</div>
         )}

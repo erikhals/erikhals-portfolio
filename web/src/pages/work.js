@@ -57,6 +57,9 @@ export const query = graphql`
             current
           }
           forClient
+          skills {
+            title
+          }
         }
       }
     }
