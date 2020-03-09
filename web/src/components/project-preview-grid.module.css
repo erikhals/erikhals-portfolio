@@ -20,7 +20,7 @@
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 4em;
+  grid-gap: 8em;
 
   @media (--media-min-small) {
     grid-template-columns: 1fr;

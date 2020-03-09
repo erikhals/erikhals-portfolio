@@ -58,14 +58,10 @@
 .skillBlockLeft {
   grid-area: left;
   text-align: right;
-  margin: auto;
-  margin-right: 0;
 }
 
 .skillBlockRight {
   grid-area: right;
-  margin: auto;
-  margin-left: 0;
 }
 
 .title {
