@@ -22,8 +22,11 @@ function ProjectPreview (props) {
           />
         )}
       </div>
-      <div className={props.left ? styles.skillBlockRight : styles.skillBlockLeft}>{props.skills.map(skill => <div>{skill.title}</div>)}</div>
-      <div className={props.left ? styles.titleBlockLeft : styles.titleBlockRight}><h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
+      <div className={props.left ? styles.skillBlockRight : styles.skillBlockLeft}>
+        {props.skills.map(skill => <div key={skill.title}>{skill.title}</div>)}
+      </div>
+      <div className={props.left ? styles.titleBlockLeft : styles.titleBlockRight}>
+        <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
         {props.forClient && (
           <div className={styles.excerpt}>{props.forClient}</div>
         )}
