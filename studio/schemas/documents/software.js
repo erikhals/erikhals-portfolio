@@ -15,6 +15,16 @@ export default {
       name: 'logo',
       type: 'image',
       title: 'Logo'
+    },
+    {
+      name: 'description',
+      type: 'text',
+      title: 'Description'
+    },
+    {
+      name: 'link',
+      type: 'url',
+      title: 'Url'
     }
   ]
 }
