@@ -60,6 +60,16 @@ export const query = graphql`
           skills {
             title
           }
+          softwares {
+            title
+            logo {
+              asset {
+                fluid(maxWidth: 100) {
+                  src
+                }
+              }
+            }
+          }
         }
       }
     }

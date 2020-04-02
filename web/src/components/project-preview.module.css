@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
+    "topLeft topRight"
     "left right"
     "lowLeft lowRight";
   grid-gap: 1em;
@@ -62,6 +63,28 @@
 
 .skillBlockRight {
   grid-area: right;
+}
+
+.softwareBlockRight {
+  grid-area: topLeft;
+  @nest & img {
+    display: inline-block;
+    float: left;
+    margin: 0px 5px;
+    width: 2em;
+    height: 2em;
+  }
+}
+
+.softwareBlockLeft {
+  grid-area: topRight;
+  @nest & img {
+    display: inline-block;
+    float: right;
+    margin: 0px 5px;
+    width: 2em;
+    height: 2em;
+  }
 }
 
 .title {

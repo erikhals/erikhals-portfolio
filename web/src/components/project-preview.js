@@ -10,6 +10,9 @@ function ProjectPreview (props) {
   console.log(props)
   return (
     <Link className={styles.root} to={`/project/${props.slug.current}`}>
+      <div className={props.left ? styles.softwareBlockRight : styles.softwareBlockLeft}>{props.softwares && props.softwares.map(software => (
+        <img key={software.title} src={software.logo.asset.fluid.src} alt={software.title} />))}
+      </div>
       <div className={props.left ? styles.leadMediaThumb : styles.leadMediaThumbRight}>
         {props.mainImage &&
         props.mainImage.asset && (
