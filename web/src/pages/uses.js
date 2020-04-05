@@ -47,7 +47,7 @@ const uses = (props) => {
         <h2>Softwares</h2>
         <ul>
           {data.allSanitySoftware.edges.map(({node}) => {
-            return (<li key={node.title}>{node.title}</li>)})}
+            return (<li key={node.title}><img src={node.logo.asset.fluid.src}/>{node.title}</li>)})}
         </ul>
       </Container>
     </Layout>

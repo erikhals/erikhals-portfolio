@@ -7,15 +7,11 @@ import styles from './project-preview.module.css'
 import {responsiveTitle3} from './typography.module.css'
 
 function ProjectPreview (props) {
-  console.log(props)
   return (
-    <Link className={styles.root} to={`/project/${props.slug.current}`}>
-      <div className={props.left ? styles.softwareBlockRight : styles.softwareBlockLeft}>{props.softwares && props.softwares.map(software => (
-        <img key={software.title} src={software.logo.asset.fluid.src} alt={software.title} />))}
-      </div>
-      <div className={props.left ? styles.leadMediaThumb : styles.leadMediaThumbRight}>
+    <div className={styles.root} >
+      <Link className={props.left ? styles.leadMediaThumb : styles.leadMediaThumbRight} to={`/project/${props.slug.current}`}>
         {props.mainImage &&
-        props.mainImage.asset && (
+          props.mainImage.asset && (
           <img
             src={imageUrlFor(buildImageObj(props.mainImage))
               .width(600)
@@ -24,17 +20,22 @@ function ProjectPreview (props) {
             alt={props.mainImage.alt}
           />
         )}
-      </div>
-      <div className={props.left ? styles.skillBlockRight : styles.skillBlockLeft}>
-        {props.skills.map(skill => <div key={skill.title}>{skill.title}</div>)}
-      </div>
-      <div className={props.left ? styles.titleBlockLeft : styles.titleBlockRight}>
+      </Link>
+      <Link className={props.left ? styles.titleBlockLeft : styles.titleBlockRight} to={`/project/${props.slug.current}`}>
         <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
         {props.forClient && (
           <div className={styles.excerpt}>{props.forClient}</div>
         )}
+      </Link>
+
+      <div className={props.left ? styles.skillBlockRight : styles.skillBlockLeft}>
+        {props.skills.map(skill => <div key={skill.title}>{skill.title}</div>)}
       </div>
-    </Link>
+      <div className={props.left ? styles.softwareBlockRight : styles.softwareBlockLeft}>{props.softwares && props.softwares.map(software => (
+        <img key={software.title} src={software.logo.asset.fluid.src} alt={software.title} />))}
+      </div>
+
+    </div>
   )
 }
 

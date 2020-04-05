@@ -51,10 +51,14 @@
 
 .titleBlockLeft {
   grid-area: lowLeft;
+  color: inherit;
+  text-decoration: none;
 }
 
 .titleBlockRight {
   grid-area: lowRight;
+  color: inherit;
+  text-decoration: none;
 }
 .skillBlockLeft {
   grid-area: left;
