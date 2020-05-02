@@ -8,15 +8,21 @@ import styles from './layout.module.css'
 
 const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
   <>
-    <Helmet> <link rel='icon' href={favicon}/> </Helmet>
-    <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
+    <Helmet>
+      {' '}
+      <link rel='icon' href={favicon} />{' '}
+    </Helmet>
+    <Header
+      siteTitle={siteTitle}
+      onHideNav={onHideNav}
+      onShowNav={onShowNav}
+      showNav={showNav}
+    />
     <div className={styles.content}>{children}</div>
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
         <div className={styles.siteInfo}>
-          © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a> &amp;
-          {` `}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+          © {new Date().getFullYear()}, Built by Erik Hals
         </div>
       </div>
     </footer>

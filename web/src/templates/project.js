@@ -44,6 +44,16 @@ export const query = graphql`
         }
         alt
       }
+      softwares {
+        logo {
+          asset {
+            fixed(height: 30, width: 30) {
+              src
+            }
+          }
+        }
+        title
+      }
       title
       slug {
         current

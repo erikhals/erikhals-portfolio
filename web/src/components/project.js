@@ -9,7 +9,15 @@ import Container from './container'
 import styles from './project.module.css'
 
 function Project (props) {
-  const {_rawBody, title, places, mainImage, publishedAt, relatedProjects} = props
+  const {
+    _rawBody,
+    title,
+    places,
+    softwares,
+    mainImage,
+    publishedAt,
+    relatedProjects
+  } = props
   return (
     <article className={styles.root}>
       {props.mainImage && mainImage.asset && (
@@ -40,7 +48,7 @@ function Project (props) {
             )}
             {places && places.length > 0 && (
               <div className={styles.categories}>
-                <h3 className={styles.categoriesHeadline}>Categories</h3>
+                <h3 className={styles.categoriesHeadline}>Where?</h3>
                 <ul>
                   {places.map(place => (
                     <li key={place._id}>{place.title}</li>
@@ -48,14 +56,33 @@ function Project (props) {
                 </ul>
               </div>
             )}
+            {softwares && softwares.length > 0 && (
+              <div className={styles.categories}>
+                <h3 className={styles.categoriesHeadline}>With?</h3>
+                <ul>
+                  {softwares.map(software => (
+                    <li key={software._id}>
+                      <div>
+                        <img src={software.logo.asset.fixed.src} />
+                      </div>
+                      {software.title}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {relatedProjects && relatedProjects.length > 0 && (
               <div className={styles.relatedProjects}>
-                <h3 className={styles.relatedProjectsHeadline}>Related projects</h3>
+                <h3 className={styles.relatedProjectsHeadline}>
+                  Related projects
+                </h3>
                 <ul>
                   {relatedProjects.map(project => (
                     <li key={`related_${project._id}`}>
                       {project.slug ? (
-                        <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
+                        <Link to={`/project/${project.slug.current}`}>
+                          {project.title}
+                        </Link>
                       ) : (
                         <span>{project.title}</span>
                       )}
