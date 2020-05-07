@@ -1,51 +1,49 @@
-/*
- * Statically sized elements
- */
+import styled from 'styled-components'
 
-.title1 {
+export const title1 = styled.h1`
   font-size: var(--font-title1-size);
   line-height: var(--font-title1-line-height);
-}
+`
 
-.title2 {
+export const title2 = styled.h2`
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-}
+`
 
-.title3 {
+export const title3 = styled.h3`
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
-}
+`
 
-.large {
+export const large = styled.h1`
   font-size: var(--font-large-size);
   line-height: var(--font-large-line-height);
-}
+`
 
-.base {
+export const base = styled.h2`
   font-size: inherit;
   line-height: inherit;
-}
+`
 
-.small {
+export const small = styled.h3`
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
-}
+`
 
-.micro {
+export const micro = styled.p`
   font-size: var(--font-micro-size);
   line-height: var(--font-micro-line-height);
   text-transform: uppercase;
-}
+`
 
 /*
  * Responsively sized elements
  */
 
-.paragraph {
+export const paragraph = styled.p`
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
-  margin: 0.5rem 0 1rem 0;
+  margin: 0export const 5rem 0 1rem 0;
 
   @media (min-width: 450px) {
     font-size: var(--font-base-size);
@@ -56,13 +54,13 @@
     font-size: var(--font-large-size);
     line-height: var(--font-large-line-height);
   }
-}
+`
 
-.blockQuote {
+export const blockQuote = styled.blockquote`
   background: #eee;
-}
+`
 
-.responsiveTitle1 {
+export const responsiveTitle1 = styled.h1`
   font-weight: 900;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
@@ -77,13 +75,13 @@
     font-size: var(--font-title1-size);
     line-height: var(--font-title1-line-height);
   }
-}
+`
 
-.responsiveTitle2 {
+export const responsiveTitle2 = styled.h2`
   font-weight: 900;
   font-size: var(--font-large-size);
   line-height: var(--font-large-line-height);
-  margin: 1.5rem 0 0.5rem;
+  margin: 1export const 5rem 0 0export const 5rem;
 
   @media (min-width: 450px) {
     font-size: var(--font-title3-size);
@@ -94,13 +92,13 @@
     font-size: var(--font-title2-size);
     line-height: var(--font-title2-line-height);
   }
-}
+`
 
-.responsiveTitle3 {
+export const responsiveTitle3 = styled.h3`
   font-weight: 900;
   font-size: var(--font-large-size);
   line-height: var(--font-large-line-height);
-  margin: 1rem 0 0.5rem;
+  margin: 1rem 0 0export const 5rem;
 
   @media (min-width: 450px) {
     font-size: var(--font-large-size);
@@ -111,12 +109,12 @@
     font-size: var(--font-title3-size);
     line-height: var(--font-title3-line-height);
   }
-}
+`
 
-.responsiveTitle4 {
+export const responsiveTitle4 = styled.h4`
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
-  margin: 1rem 0 0.5rem;
+  margin: 1rem 0 0export const 5rem;
 
   @media (min-width: 450px) {
     font-size: var(--font-base-size);
@@ -127,4 +125,4 @@
     font-size: var(--font-large-size);
     line-height: var(--font-large-line-height);
   }
-}
+`

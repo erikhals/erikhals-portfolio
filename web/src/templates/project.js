@@ -45,6 +45,7 @@ export const query = graphql`
         alt
       }
       softwares {
+        _id
         logo {
           asset {
             fixed(height: 30, width: 30) {
