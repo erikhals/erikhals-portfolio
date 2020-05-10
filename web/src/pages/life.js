@@ -7,7 +7,7 @@ import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 
-import {responsiveTitle1} from '../components/typography.module.css'
+import {ResponsiveTitle1} from '../components/typography'
 
 export const query = graphql`
   query LifePageQuery {
@@ -42,7 +42,7 @@ export const query = graphql`
   }
 `
 
-const LifePage = (props) => {
+const LifePage = props => {
   const {data, errors} = props
   if (errors) {
     return (
@@ -59,9 +59,10 @@ const LifePage = (props) => {
     <Layout>
       <SEO title='Life' />
       <Container>
-        <h1 className={responsiveTitle1}>Life</h1>
-        {projectNodes &&
-        projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
+        <ResponsiveTitle1>Life</ResponsiveTitle1>
+        {projectNodes && projectNodes.length > 0 && (
+          <ProjectPreviewGrid nodes={projectNodes} />
+        )}
       </Container>
     </Layout>
   )

@@ -1,36 +1,36 @@
 import styled from 'styled-components'
 
-export const title1 = styled.h1`
+export const Title1 = styled.h1`
   font-size: var(--font-title1-size);
   line-height: var(--font-title1-line-height);
 `
 
-export const title2 = styled.h2`
+export const Title2 = styled.h2`
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
 `
 
-export const title3 = styled.h3`
+export const Title3 = styled.h3`
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
 `
 
-export const large = styled.h1`
+export const Large = styled.h1`
   font-size: var(--font-large-size);
   line-height: var(--font-large-line-height);
 `
 
-export const base = styled.h2`
+export const Base = styled.h2`
   font-size: inherit;
   line-height: inherit;
 `
 
-export const small = styled.h3`
+export const Small = styled.h3`
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
 `
 
-export const micro = styled.p`
+export const Micro = styled.p`
   font-size: var(--font-micro-size);
   line-height: var(--font-micro-line-height);
   text-transform: uppercase;
@@ -40,10 +40,10 @@ export const micro = styled.p`
  * Responsively sized elements
  */
 
-export const paragraph = styled.p`
+export const Paragraph = styled.p`
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
-  margin: 0export const 5rem 0 1rem 0;
+  margin: 0.5rem 0 1rem 0;
 
   @media (min-width: 450px) {
     font-size: var(--font-base-size);
@@ -56,11 +56,11 @@ export const paragraph = styled.p`
   }
 `
 
-export const blockQuote = styled.blockquote`
+export const BlockQuote = styled.blockquote`
   background: #eee;
 `
 
-export const responsiveTitle1 = styled.h1`
+export const ResponsiveTitle1 = styled.h1`
   font-weight: 900;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
@@ -77,11 +77,11 @@ export const responsiveTitle1 = styled.h1`
   }
 `
 
-export const responsiveTitle2 = styled.h2`
+export const ResponsiveTitle2 = styled.h2`
   font-weight: 900;
   font-size: var(--font-large-size);
   line-height: var(--font-large-line-height);
-  margin: 1export const 5rem 0 0export const 5rem;
+  margin: 1.5rem 0 0.5rem;
 
   @media (min-width: 450px) {
     font-size: var(--font-title3-size);
@@ -94,11 +94,11 @@ export const responsiveTitle2 = styled.h2`
   }
 `
 
-export const responsiveTitle3 = styled.h3`
+export const ResponsiveTitle3 = styled.h3`
   font-weight: 900;
   font-size: var(--font-large-size);
   line-height: var(--font-large-line-height);
-  margin: 1rem 0 0export const 5rem;
+  margin: 1rem 0 0.5rem;
 
   @media (min-width: 450px) {
     font-size: var(--font-large-size);
@@ -111,10 +111,10 @@ export const responsiveTitle3 = styled.h3`
   }
 `
 
-export const responsiveTitle4 = styled.h4`
+export const ResponsiveTitle4 = styled.h4`
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
-  margin: 1rem 0 0export const 5rem;
+  margin: 1rem 0 0.5rem;
 
   @media (min-width: 450px) {
     font-size: var(--font-base-size);

@@ -5,7 +5,27 @@ import Helmet from 'react-helmet'
 import GlobalStyle from '../styles/globalStyle'
 import favicon from './icon/favicon.ico'
 
-// import '../styles/layout.css'
+const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
+  <>
+    <Helmet>
+      {' '}
+      <link rel='icon' href={favicon} />{' '}
+    </Helmet>
+    <GlobalStyle />
+    <Header
+      siteTitle={siteTitle}
+      onHideNav={onHideNav}
+      onShowNav={onShowNav}
+      showNav={showNav}
+    />
+    <Content>{children}</Content>
+    <Footer>
+      <FooterWrapper>
+        <SiteInfo>© {new Date().getFullYear()}, Built by Erik Hals</SiteInfo>
+      </FooterWrapper>
+    </Footer>
+  </>
+)
 
 const Content = styled.div`
   background: var(--color-white);
@@ -45,27 +65,5 @@ const SiteInfo = styled.div`
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
 `
-
-const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
-  <>
-    <Helmet>
-      {' '}
-      <link rel='icon' href={favicon} />{' '}
-    </Helmet>
-    <GlobalStyle />
-    <Header
-      siteTitle={siteTitle}
-      onHideNav={onHideNav}
-      onShowNav={onShowNav}
-      showNav={showNav}
-    />
-    <Content>{children}</Content>
-    <Footer>
-      <FooterWrapper>
-        <SiteInfo>© {new Date().getFullYear()}, Built by Erik Hals</SiteInfo>
-      </FooterWrapper>
-    </Footer>
-  </>
-)
 
 export default Layout

@@ -4,7 +4,7 @@ import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import {responsiveTitle1} from '../components/typography.module.css'
+import {ResponsiveTitle1} from '../components/typography'
 
 export const query = graphql`
   query SoftwaresQuery {
@@ -25,7 +25,7 @@ export const query = graphql`
   }
 `
 
-const uses = (props) => {
+const uses = props => {
   const {data, errors} = props
   if (errors) {
     return (
@@ -38,7 +38,7 @@ const uses = (props) => {
     <Layout>
       <SEO title='Uses' />
       <Container>
-        <h1 className={responsiveTitle1}>Uses</h1>
+        <ResponsiveTitle1>Uses</ResponsiveTitle1>
         <h2>Hardware </h2>
         <ul>
           <li>Macbook Pro 15 Retina Mid 2012</li>
@@ -47,7 +47,13 @@ const uses = (props) => {
         <h2>Softwares</h2>
         <ul>
           {data.allSanitySoftware.edges.map(({node}) => {
-            return (<li key={node.title}><img src={node.logo.asset.fluid.src}/>{node.title}</li>)})}
+            return (
+              <li key={node.title}>
+                <img src={node.logo.asset.fluid.src} />
+                {node.title}
+              </li>
+            )
+          })}
         </ul>
       </Container>
     </Layout>
