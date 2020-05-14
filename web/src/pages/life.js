@@ -59,7 +59,6 @@ const LifePage = props => {
     <Layout>
       <SEO title='Life' />
       <Container>
-        <ResponsiveTitle1>Life</ResponsiveTitle1>
         {projectNodes && projectNodes.length > 0 && (
           <ProjectPreviewGrid nodes={projectNodes} />
         )}
