@@ -14,6 +14,13 @@ export const query = graphql`
       places {
         _id
         title
+        logo {
+          asset {
+            fluid {
+              src
+            }
+          }
+        }
       }
       relatedProjects {
         title
@@ -55,6 +62,18 @@ export const query = graphql`
         }
         title
       }
+      skills {
+        _id
+        logo {
+          asset {
+            fixed(height: 30, width: 30) {
+              src
+            }
+          }
+        }
+        title
+      }
+      videoLink
       title
       slug {
         current

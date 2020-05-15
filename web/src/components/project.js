@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 import BlockContent from './block-content'
+import YoutubePreview from './youtube'
 import Container from './container'
 import * as S from './typography'
 
@@ -14,13 +15,20 @@ function Project (props) {
     title,
     places,
     softwares,
+    skills,
     mainImage,
+    videoLink,
     publishedAt,
     relatedProjects
   } = props
+
+  const mainVideoData = {
+    url: videoLink
+  }
+
   return (
     <article>
-      {props.mainImage && mainImage.asset && (
+      {!props.videoLink && props.mainImage && mainImage.asset && (
         <MainImage>
           <img
             src={imageUrlFor(buildImageObj(mainImage))
@@ -31,6 +39,11 @@ function Project (props) {
             alt={mainImage.alt}
           />
         </MainImage>
+      )}
+      {props.videoLink && (
+        <MainVideo>
+          <YoutubePreview node={mainVideoData} modestbranding />
+        </MainVideo>
       )}
       <Container>
         <Grid>
@@ -51,7 +64,22 @@ function Project (props) {
                 <ListHeadline>Where?</ListHeadline>
                 <ul>
                   {places.map(place => (
-                    <li key={place._id}>{place.title}</li>
+                    <PlaceLogo key={place._id}>
+                      <img src={place.logo.asset.fluid.src} alt={place.title} />
+                    </PlaceLogo>
+                  ))}
+                </ul>
+              </Categories>
+            )}
+            {skills && skills.length > 0 && (
+              <Categories>
+                <ListHeadline>What?</ListHeadline>
+                <ul>
+                  {skills.map(skill => (
+                    <ListItem key={skill._id}>
+                      <img src={skill.logo.asset.fixed.src} alt={skill.title} />
+                      <span>{skill.title}</span>
+                    </ListItem>
                   ))}
                 </ul>
               </Categories>
@@ -61,16 +89,18 @@ function Project (props) {
                 <ListHeadline>With?</ListHeadline>
                 <ul>
                   {softwares.map(software => (
-                    <li key={software._id}>
-                      <div>
-                        <img src={software.logo.asset.fixed.src} />
-                      </div>
-                      {software.title}
-                    </li>
+                    <ListItem key={software._id}>
+                      <img
+                        src={software.logo.asset.fixed.src}
+                        alt={software.title}
+                      />
+                      <span>{software.title}</span>
+                    </ListItem>
                   ))}
                 </ul>
               </Categories>
             )}
+
             {relatedProjects && relatedProjects.length > 0 && (
               <RelatedProjects>
                 <ListHeadline>Related projects</ListHeadline>
@@ -124,6 +154,34 @@ const MainImage = styled.div`
   }
 `
 
+const MainVideo = styled.div`
+  position: relative;
+  overflow: hidden;
+  // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
+  padding-top: 56.25%;
+  & iframe {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  @media (min-width: 960px) {
+    width: 960px;
+    margin: auto;
+    padding-top: 540px;
+  }
+`
+
+const PlaceLogo = styled.li`
+  & img {
+    width: 200px;
+    height: 100%;
+    object-fit: contain;
+  }
+`
+
 const Categories = styled.div`
   border-top: 1px solid var(--color-very-light-gray);
   margin: 2rem 0 3rem;
@@ -146,6 +204,20 @@ const ListHeadline = styled(S.Base)`
 const PublishedAt = styled(S.Small)`
   margin: 1.5rem 0 3rem;
   color: var(--color-gray);
+`
+
+const ListItem = styled.li`
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0;
+
+  & img {
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    margin-right: 1em;
+  }
 `
 
 const RelatedProjects = styled.div`
