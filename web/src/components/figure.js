@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const Figure = styled.figure`
   margin: 2rem 0;
 
-  @nest & figcaption {
+  & figcaption {
     font-size: var(--font-small-size);
     line-height: var(--font-small-line-height);
     margin: 0.5rem 0 0;
@@ -26,7 +26,7 @@ export default ({node}) => {
   )
 
   return (
-    <Figure className={styles.root}>
+    <Figure>
       <Img fluid={fluidProps} alt={node.alt} />
       {node.caption && <figcaption>{node.caption}</figcaption>}
     </Figure>
