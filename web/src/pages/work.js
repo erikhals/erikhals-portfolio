@@ -52,12 +52,20 @@ export const query = graphql`
             alt
           }
           title
+          _rawExcerpt
           slug {
             current
           }
           forClient
           skills {
             title
+            logo {
+              asset {
+                fluid(maxWidth: 100) {
+                  src
+                }
+              }
+            }
           }
           softwares {
             title

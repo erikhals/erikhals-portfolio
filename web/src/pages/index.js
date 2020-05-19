@@ -36,10 +36,13 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO
+        title={site.title}
+        description={site.description}
+        keywords={site.keywords}
+      />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
-
       </Container>
     </Layout>
   )

@@ -1,10 +1,12 @@
 import {Link} from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import BlockText from './block-text'
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 
 function ProjectPreview (props) {
+  console.log(props._rawExcerpt)
   return (
     <StyledProjectPreview left={props.left}>
       <LeadMediaThumb to={`/project/${props.slug.current}`}>
@@ -20,12 +22,25 @@ function ProjectPreview (props) {
       </LeadMediaThumb>
       <TitleBlock to={`/project/${props.slug.current}`}>
         <h3>{props.title}</h3>
-        {props.forClient && <div>{props.forClient}</div>}
+        {props._rawExcerpt && (
+          <span>
+            <BlockText blocks={props._rawExcerpt || []} />
+          </span>
+        )}
       </TitleBlock>
 
       <SkillBlock left={props.left}>
         {props.skills.map(skill => (
-          <li key={skill.title}>{skill.title}</li>
+          <li key={skill.title}>
+            <Tooltip>
+              <img
+                key={skill.title}
+                src={skill.logo.asset.fluid.src}
+                alt={skill.title}
+              />
+              <span>{skill.title}</span>
+            </Tooltip>
+          </li>
         ))}
       </SkillBlock>
       <SoftwareBlock>
@@ -62,6 +77,7 @@ const LeadMediaThumb = styled(Link)`
   padding-bottom: 66.666%;
   background: #eee;
   grid-area: image;
+  border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   & img {
@@ -70,6 +86,7 @@ const LeadMediaThumb = styled(Link)`
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: 5px;
     object-fit: cover;
   }
 `
@@ -78,7 +95,7 @@ const TitleBlock = styled(Link)`
   color: inherit;
   text-align: left;
   text-decoration: none;
-  :hover {
+  :hover h3 {
     text-decoration: underline;
   }
 `
@@ -88,6 +105,58 @@ const SkillBlock = styled.ul`
   text-align: ${props => (props.left ? 'left' : 'right')};
   list-style: none;
   padding-left: 0;
+  & img {
+    display: inline-block;
+    margin: 0px 5px;
+    width: 3em;
+    height: 3em;
+  }
+`
+
+const Tooltip = styled.div`
+  /* Tooltip container */
+  position: relative;
+  display: inline-block;
+
+  /* Tooltip text */
+  & span {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 105%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* Tooltip arrow */
+  & span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #555;
+  }
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+  :hover span {
+    visibility: visible;
+    opacity: 1;
+  }
 `
 
 const SoftwareBlock = styled.div`

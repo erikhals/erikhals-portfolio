@@ -73,6 +73,19 @@ export const query = graphql`
         }
         title
       }
+      video {
+        asset {
+          _key
+          _type
+          assetId
+          filename
+          playbackId
+          status
+          thumbTime
+        }
+        _key
+        _type
+      }
       videoLink
       title
       slug {

@@ -2,6 +2,7 @@ import {format, distanceInWords, differenceInDays} from 'date-fns'
 import React from 'react'
 import {Link} from 'gatsby'
 import styled from 'styled-components'
+import Video from 'sanity-mux-player'
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 import BlockContent from './block-content'
@@ -18,6 +19,7 @@ function Project (props) {
     skills,
     mainImage,
     videoLink,
+    video,
     publishedAt,
     relatedProjects
   } = props
@@ -28,7 +30,7 @@ function Project (props) {
 
   return (
     <article>
-      {!props.videoLink && props.mainImage && mainImage.asset && (
+      {!props.videoLink && !props.video && props.mainImage && mainImage.asset && (
         <MainImage>
           <img
             src={imageUrlFor(buildImageObj(mainImage))
@@ -40,11 +42,23 @@ function Project (props) {
           />
         </MainImage>
       )}
-      {props.videoLink && (
+
+      {!props.video && props.videoLink && (
         <MainVideo>
           <YoutubePreview node={mainVideoData} modestbranding />
         </MainVideo>
       )}
+      {props.video && (
+        <MainVideo>
+          <Video
+            assetDocument={video.asset}
+            autoload
+            autoplay={false}
+            showControls
+          />
+        </MainVideo>
+      )}
+
       <Container>
         <Grid>
           <MainContent>
@@ -159,7 +173,8 @@ const MainVideo = styled.div`
   overflow: hidden;
   // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
   padding-top: 56.25%;
-  & iframe {
+  & iframe,
+  video {
     border: 0;
     height: 100%;
     left: 0;
