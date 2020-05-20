@@ -35,6 +35,23 @@ export const query = graphql`
           }
           skills {
             title
+            logo {
+              asset {
+                fluid(maxWidth: 100) {
+                  src
+                }
+              }
+            }
+          }
+          softwares {
+            title
+            logo {
+              asset {
+                fluid(maxWidth: 100) {
+                  src
+                }
+              }
+            }
           }
         }
       }
