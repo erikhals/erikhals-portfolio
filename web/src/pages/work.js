@@ -69,6 +69,7 @@ export const query = graphql`
           }
           softwares {
             title
+            link
             logo {
               asset {
                 fluid(maxWidth: 100) {

@@ -6,7 +6,6 @@ import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 
 function ProjectPreview (props) {
-  console.log(props._rawExcerpt)
   return (
     <StyledProjectPreview left={props.left}>
       <LeadMediaThumb to={`/project/${props.slug.current}`}>
@@ -32,7 +31,7 @@ function ProjectPreview (props) {
       <SkillBlock left={props.left}>
         {props.skills.map(skill => (
           <li key={skill.title}>
-            <Tooltip>
+            <Tooltip left={props.left}>
               <img
                 key={skill.title}
                 src={skill.logo.asset.fluid.src}
@@ -46,11 +45,13 @@ function ProjectPreview (props) {
       <SoftwareBlock>
         {props.softwares &&
           props.softwares.map(software => (
-            <img
-              key={software.title}
-              src={software.logo.asset.fluid.src}
-              alt={software.title}
-            />
+            <a href={software.link} target='_blank' key={software.title}>
+              <img
+                key={software.title}
+                src={software.logo.asset.fluid.src}
+                alt={software.title}
+              />
+            </a>
           ))}
       </SoftwareBlock>
     </StyledProjectPreview>
@@ -132,8 +133,10 @@ const Tooltip = styled.div`
     position: absolute;
     z-index: 1;
     top: 0;
-    right: 105%;
-    margin-left: -60px;
+    left: ${props => (props.left ? '105%' : 'auto')};
+    right: ${props => (props.left ? 'auto' : '105%')};
+    margin-left: ${props => (props.left ? '60px' : 'auto')};
+    margin-left: ${props => (props.left ? 'auto' : '60px')};
 
     /* Fade in tooltip */
     opacity: 0;
@@ -145,11 +148,15 @@ const Tooltip = styled.div`
     content: '';
     position: absolute;
     top: 50%;
-    left: 100%;
+    left: ${props => (props.left ? 'auto' : '100%')};
+    right: ${props => (props.left ? '100%' : 'auto')};
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent transparent #555;
+    border-color: ${props =>
+    props.left
+      ? 'transparent #555 transparent transparent'
+      : 'transparent transparent transparent #555'};
   }
 
   /* Show the tooltip text when you mouse over the tooltip container */

@@ -104,11 +104,13 @@ function Project (props) {
                 <ul>
                   {softwares.map(software => (
                     <ListItem key={software._id}>
-                      <img
-                        src={software.logo.asset.fixed.src}
-                        alt={software.title}
-                      />
-                      <span>{software.title}</span>
+                      <a href={software.link} target='_blank'>
+                        <img
+                          src={software.logo.asset.fixed.src}
+                          alt={software.title}
+                        />
+                        <span>{software.title}</span>
+                      </a>
                     </ListItem>
                   ))}
                 </ul>
@@ -223,15 +225,24 @@ const PublishedAt = styled(S.Small)`
 
 const ListItem = styled.li`
   position: relative;
+  margin: 0.5em 0;
   display: flex;
   align-items: center;
-  margin: 0.5em 0;
+  & a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
 
   & img {
     width: 2em;
     height: 2em;
     padding: 0;
     margin-right: 1em;
+  }
+  :hover a {
+    text-decoration: underline;
   }
 `
 
