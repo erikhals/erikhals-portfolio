@@ -139,6 +139,9 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
           <li>
             <Link to='/life/'>Life</Link>
           </li>
+          <li>
+            <Link to='/uses/'>Uses</Link>
+          </li>
         </ul>
       </Nav>
     </HeaderWrapper>

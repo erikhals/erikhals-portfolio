@@ -8,7 +8,7 @@ import {imageUrlFor} from '../lib/image-url'
 function ProjectPreview (props) {
   return (
     <StyledProjectPreview left={props.left}>
-      <LeadMediaThumb to={`/project/${props.slug.current}`}>
+      <LeadMediaThumb to={`/project/${props.slug.current}`} left={props.left}>
         {props.mainImage && props.mainImage.asset && (
           <img
             src={imageUrlFor(buildImageObj(props.mainImage))
@@ -60,6 +60,7 @@ function ProjectPreview (props) {
 
 const StyledProjectPreview = styled.div`
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: ${props => {
     const leftGrid =
@@ -71,6 +72,9 @@ const StyledProjectPreview = styled.div`
   grid-gap: 1em;
   color: inherit;
   text-decoration: none;
+  @media (max-width: 450px) {
+    grid-template-columns: auto auto;
+  }
 `
 
 const LeadMediaThumb = styled(Link)`
@@ -80,6 +84,7 @@ const LeadMediaThumb = styled(Link)`
   grid-area: image;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transform: ${props => (props.left ? 'rotate(-2deg)' : 'rotate(2deg)')};
 
   & img {
     position: absolute;

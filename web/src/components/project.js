@@ -234,7 +234,6 @@ const ListItem = styled.li`
     text-decoration: none;
     color: inherit;
   }
-
   & img {
     width: 2em;
     height: 2em;

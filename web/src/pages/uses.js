@@ -1,5 +1,6 @@
 import React from 'react'
 import {graphql} from 'gatsby'
+import styled from 'styled-components'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
@@ -14,7 +15,7 @@ export const query = graphql`
           title
           logo {
             asset {
-              fluid(maxWidth: 10) {
+              fluid(maxWidth: 30) {
                 src
               }
             }
@@ -44,14 +45,14 @@ const uses = props => {
           <li>Macbook Pro 15 Retina Mid 2012</li>
           <li>Logitech G402 Mouse</li>
         </ul>
-        <h2>Softwares</h2>
+        <h2>Software</h2>
         <ul>
           {data.allSanitySoftware.edges.map(({node}) => {
             return (
-              <li key={node.title}>
+              <Card key={node.title}>
                 <img src={node.logo.asset.fluid.src} />
-                {node.title}
-              </li>
+                <span>{node.title}</span>
+              </Card>
             )
           })}
         </ul>
@@ -59,5 +60,22 @@ const uses = props => {
     </Layout>
   )
 }
+
+const Card = styled.li`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 40px;
+  padding: 0.25rem;
+  & img {
+    top: 0;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    margin-right: 1em;
+  }
+  & span {
+  }
+`
 
 export default uses
