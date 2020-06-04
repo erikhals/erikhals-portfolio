@@ -73,7 +73,8 @@ export default {
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: {type: 'category'}
+      to: {type: 'category'},
+      validation: Rule => Rule.required()
     },
     {
       name: 'places',
