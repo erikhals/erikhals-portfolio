@@ -3,6 +3,7 @@ import {graphql} from 'gatsby'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
+import Life from '../components/life'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
@@ -11,13 +12,13 @@ import {ResponsiveTitle1} from '../components/typography'
 
 export const query = graphql`
   query LifePageQuery {
-    projects: allSanityProject(
-      limit: 12
-      sort: {fields: [publishedAt], order: DESC}
+    education: allSanityProject(
+      limit: 3
+      sort: {fields: [publishedAt], order: ASC}
       filter: {
         slug: {current: {ne: null}}
         publishedAt: {ne: null}
-        category: {title: {eq: "Life"}}
+        category: {title: {eq: "Education"}}
       }
     ) {
       edges {
@@ -69,18 +70,16 @@ const LifePage = props => {
       </Layout>
     )
   }
-  const projectNodes =
+  const educationNodes =
     data &&
-    data.projects &&
-    mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
+    data.education &&
+    mapEdgesToNodes(data.education).filter(filterOutDocsWithoutSlugs)
   return (
     <Layout>
       <SEO title='Life' />
-      <Container>
-        {projectNodes && projectNodes.length > 0 && (
-          <ProjectPreviewGrid nodes={projectNodes} />
-        )}
-      </Container>
+      {educationNodes && educationNodes.length > 0 && (
+        <Life education={educationNodes} />
+      )}
     </Layout>
   )
 }

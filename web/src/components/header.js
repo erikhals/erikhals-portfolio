@@ -3,10 +3,32 @@ import React from 'react'
 import styled, {css} from 'styled-components'
 import Icon from './icon'
 
-// import styles from './header.module.css'
+const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
+  <HeaderRoot>
+    <HeaderWrapper>
+      <ToggleNavButton onClick={() => (showNav ? onHideNav() : onShowNav())}>
+        <Icon symbol='hamburger' />
+      </ToggleNavButton>
+      <Nav showNav={showNav}>
+        <ul>
+          <li>
+            <Link to='/life/'>Life</Link>
+          </li>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/work/'>Work</Link>
+          </li>
+        </ul>
+      </Nav>
+    </HeaderWrapper>
+  </HeaderRoot>
+)
 
 const HeaderRoot = styled.div`
-  position: relative;
+  position: fixed;
+  width: 100%;
   z-index: 100;
 `
 
@@ -16,7 +38,6 @@ const HeaderWrapper = styled.div`
   max-width: 960px;
   padding: 1em;
   display: flex;
-
   @media (min-width: 450px) {
     padding: 1.5em 1.5em;
   }
@@ -49,7 +70,6 @@ const ToggleNavButton = styled.button`
   padding: calc(14 / 17 / 2 * 1rem);
   outline: none;
   color: inherit;
-
   & svg {
     display: block;
     fill: inherit;
@@ -69,7 +89,6 @@ const Nav = styled.nav`
       : css`
           display: none;
         `}
-
   & ul {
     margin: 0;
     padding: 0;
@@ -106,7 +125,7 @@ const Nav = styled.nav`
   }
 
   @media (min-width: 450px) {
-    display: block;
+    display: none;
 
     & ul {
       list-style: none;
@@ -119,33 +138,4 @@ const Nav = styled.nav`
     }
   }
 `
-
-const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
-  <HeaderRoot>
-    <HeaderWrapper>
-      <Branding>
-        <Link to='/'>{siteTitle}</Link>
-      </Branding>
-
-      <ToggleNavButton onClick={() => (showNav ? onHideNav() : onShowNav())}>
-        <Icon symbol='hamburger' />
-      </ToggleNavButton>
-
-      <Nav showNav={showNav}>
-        <ul>
-          <li>
-            <Link to='/work/'>Work</Link>
-          </li>
-          <li>
-            <Link to='/life/'>Life</Link>
-          </li>
-          <li>
-            <Link to='/uses/'>Uses</Link>
-          </li>
-        </ul>
-      </Nav>
-    </HeaderWrapper>
-  </HeaderRoot>
-)
-
 export default Header

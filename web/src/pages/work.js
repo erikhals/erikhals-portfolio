@@ -8,6 +8,7 @@ import {
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
+import Work from '../components/work'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 
@@ -69,7 +70,6 @@ export const query = graphql`
           }
           softwares {
             title
-            link
             logo {
               asset {
                 fluid(maxWidth: 100) {
@@ -114,12 +114,8 @@ const WorkPage = props => {
         description={site.description}
         keywords={site.keywords}
       />
-      <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        {projectNodes && (
-          <ProjectPreviewGrid title='Work' nodes={projectNodes} />
-        )}
-      </Container>
+      <h1 hidden>Welcome to {site.title}</h1>
+      {projectNodes && <Work title='Work' nodes={projectNodes} />}
     </Layout>
   )
 }

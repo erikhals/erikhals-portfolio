@@ -21,16 +21,31 @@ function Project (props) {
     videoLink,
     video,
     publishedAt,
-    relatedProjects
+    relatedProjects,
+    category
   } = props
 
   const mainVideoData = {
     url: videoLink
   }
 
+  let backLink = '/'
+
+  switch (category.title) {
+    case 'Education':
+      backLink = '/life'
+      break
+    case 'Life':
+      backLink = '/life'
+      break
+    case 'Work':
+      backLink = '/work'
+      break
+  }
+
   return (
     <article>
-      {!props.videoLink && !props.video && props.mainImage && mainImage.asset && (
+      {!videoLink && !video && mainImage && mainImage.asset && (
         <MainImage>
           <img
             src={imageUrlFor(buildImageObj(mainImage))
@@ -43,12 +58,12 @@ function Project (props) {
         </MainImage>
       )}
 
-      {!props.video && props.videoLink && (
+      {!video && videoLink && (
         <MainVideo>
           <YoutubePreview node={mainVideoData} modestbranding />
         </MainVideo>
       )}
-      {props.video && (
+      {video && (
         <MainVideo>
           <Video
             assetDocument={video.asset}
@@ -60,6 +75,7 @@ function Project (props) {
       )}
 
       <Container>
+        <Link to={backLink}>{category.title}</Link>
         <Grid>
           <MainContent>
             <S.Title1>{title}</S.Title1>
@@ -167,6 +183,10 @@ const MainImage = styled.div`
     height: 100%;
     vertical-align: top;
     object-fit: cover;
+  }
+  @media (min-width: 960px) {
+    width: 960px;
+    margin: auto;
   }
 `
 
