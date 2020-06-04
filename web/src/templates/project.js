@@ -92,6 +92,9 @@ export const query = graphql`
       slug {
         current
       }
+      category {
+        title
+      }
       _rawBody
     }
   }
@@ -110,7 +113,7 @@ const ProjectTemplate = props => {
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {project && <Project {...project} />}
+      <Container>{project && <Project {...project} />}</Container>
     </Layout>
   )
 }

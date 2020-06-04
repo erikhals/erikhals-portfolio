@@ -1,5 +1,7 @@
 import React from 'react'
-import {graphql} from 'gatsby'
+import {Link, graphql} from 'gatsby'
+import Home from '../components/Home'
+
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
@@ -11,6 +13,26 @@ export const query = graphql`
       title
       description
       keywords
+    }
+    sanitySiteSettings {
+      author {
+        _rawBio
+      }
+    }
+    allSanitySoftware {
+      edges {
+        node {
+          title
+          link
+          logo {
+            asset {
+              fixed(width: 60) {
+                src
+              }
+            }
+          }
+        }
+      }
     }
   }
 `
@@ -27,6 +49,8 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site
+  const bio = (data || {}).sanitySiteSettings.author._rawBio[0].children[0].text
+  const software = (data || {}).allSanitySoftware.edges
 
   if (!site) {
     throw new Error(
@@ -35,16 +59,17 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout>
+    <>
       <SEO
         title={site.title}
         description={site.description}
         keywords={site.keywords}
       />
-      <Container>
+      <Layout>
         <h1 hidden>Welcome to {site.title}</h1>
-      </Container>
-    </Layout>
+        <Home bio={bio} software={software} />
+      </Layout>
+    </>
   )
 }
 

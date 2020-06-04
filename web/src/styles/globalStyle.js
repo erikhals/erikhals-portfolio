@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   --color-light-gray: #b4bcc7;
   --color-very-light-gray: #e7ebed;
   --color-white: #fff;
-  --color-accent: #156dff;
+  --color-accent: #56ccf2;
 
   /* Typography */
   --unit: 16;
