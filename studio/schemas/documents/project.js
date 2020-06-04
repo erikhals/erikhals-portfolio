@@ -23,6 +23,13 @@ export default {
       }
     },
     {
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: {type: 'category'},
+      validation: Rule => Rule.error('You have to choose a category.').required()
+    },
+    {
       name: 'forClient',
       title: 'Client',
       type: 'string'
@@ -68,13 +75,6 @@ export default {
       title: 'Video file',
       name: 'video',
       type: 'mux.video'
-    },
-    {
-      name: 'category',
-      title: 'Category',
-      type: 'reference',
-      to: {type: 'category'},
-      validation: Rule => Rule.required()
     },
     {
       name: 'places',
