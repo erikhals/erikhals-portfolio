@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, graphql} from 'gatsby'
-import Home from '../components/Home'
+import Home from '../components/home'
 
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
