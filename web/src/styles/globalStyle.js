@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -43,7 +43,7 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   background: var(--color-white);
-  color: var(--color-black);
+  color: var(--color-white);
   margin: 0;
 }
 
@@ -53,6 +53,6 @@ body > div,
 body > div > div {
   height: 100%;
 }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

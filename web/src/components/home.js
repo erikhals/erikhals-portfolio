@@ -1,8 +1,8 @@
-import React from 'react'
-import styled, {css} from 'styled-components'
-import {Link} from 'gatsby'
-import {BlueBG, NavButton, Tooltip} from './layout'
-import img from '../images/wood_texture.jpg'
+import React from "react";
+import styled, { css } from "styled-components";
+import { Link } from "gatsby";
+import { BlueBG, NavButton, Tooltip } from "./layout";
+import img from "../images/wood_texture.jpg";
 
 const Home = props => {
   return (
@@ -16,31 +16,27 @@ const Home = props => {
       <MacBook>
         <StickerGrid>
           {props.software &&
-            props.software.map(({node}) => {
-              const randomRot = (Math.random() - 0.5) * 2
+            props.software.map(({ node }) => {
+              const randomRot = (Math.random() - 0.5) * 2;
               return (
                 <Tooltip>
                   <Sticker key={node.title} randomRot={randomRot}>
                     <img src={node.logo.asset.fixed.src} />
                     <span>
-                      <a href={node.link} target='_blank'>
+                      <a href={node.link} target="_blank">
                         {node.title}
                       </a>
                     </span>
                   </Sticker>
                 </Tooltip>
-              )
+              );
             })}
         </StickerGrid>
       </MacBook>
       <Table />
-      <NavButton to='/life'>Life</NavButton>
-      <NavButton to='/work' right>
-        Work
-      </NavButton>
     </HomeGrid>
-  )
-}
+  );
+};
 const HomeGrid = styled.div`
   display: grid;
   height: 100vh;
@@ -50,12 +46,12 @@ const HomeGrid = styled.div`
   @media (max-width: 650px) {
     padding: 1em;
   }
-`
+`;
 const Greeting = styled.div`
   color: #56ccf2;
   max-width: 25em;
   align-self: center;
-`
+`;
 const Cap = styled.div`
   background: #304352; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -76,7 +72,7 @@ const Cap = styled.div`
   grid-row: 2;
   border-top-right-radius: 10vw;
   border-top-left-radius: 10vw;
-`
+`;
 const MacBook = styled.div`
   position: relative;
   background: lightgrey;
@@ -101,7 +97,7 @@ const MacBook = styled.div`
     width: 60%;
     padding-top: 40%;
   }
-`
+`;
 const StickerGrid = styled.div`
   position: absolute;
   top: 0;
@@ -113,7 +109,7 @@ const StickerGrid = styled.div`
   grid-template-rows: repeat(4 1fr);
   padding: 3vw;
   filter: drop-shadow(0px 1px 1px #777);
-`
+`;
 const Sticker = styled.div`
   transform: rotate(${props => props.randomRot * 15}deg);
   & img {
@@ -127,11 +123,11 @@ const Sticker = styled.div`
   & img:hover {
     transform: scale(1.1);
   }
-`
+`;
 const Table = styled.div`
   height: 2em;
   width: 100%;
   grid-row: 4;
   background-image: url(${img});
-`
-export default Home
+`;
+export default Home;

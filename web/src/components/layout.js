@@ -1,16 +1,16 @@
-import React from 'react'
-import styled, {css} from 'styled-components'
-import {Link} from 'gatsby'
-import Header from './header'
-import Helmet from 'react-helmet'
-import GlobalStyle from '../styles/globalStyle'
-import favicon from './icon/favicon.ico'
+import React from "react";
+import styled, { css } from "styled-components";
+import { Link } from "gatsby";
+import Header from "./header";
+import Helmet from "react-helmet";
+import GlobalStyle from "../styles/globalStyle";
+import favicon from "./icon/favicon.ico";
 
-const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
+const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
   <>
     <Helmet>
-      {' '}
-      <link rel='icon' href={favicon} />{' '}
+      {" "}
+      <link rel="icon" href={favicon} />{" "}
     </Helmet>
     <GlobalStyle />
     <Header
@@ -21,11 +21,11 @@ const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
     />
     <Content>{children}</Content>
   </>
-)
+);
 
 const Content = styled.div`
   min-height: 100%;
-`
+`;
 const Footer = styled.footer`
   box-sizing: border-box;
   max-width: 960px;
@@ -45,7 +45,7 @@ const Footer = styled.footer`
       }
     }
   }
-`
+`;
 export const BlueBG = styled.div`
   position: fixed;
   top: 0;
@@ -64,21 +64,28 @@ export const BlueBG = styled.div`
     #141e30
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: -100;
-`
+`;
 
 export const NavButton = styled(Link)`
   text-decoration: none;
   color: #56ccf2;
   position: fixed;
+  display: inline-block;
   top: 50%;
-  ${props => (props.right ? 'right: 5vw;' : 'left: 5vw;')}
-  width: 3em;
+  ${props => (props.right ? "right: 5vw;" : "left: 5vw;")}
+  width: 4em;
+  height: 4em;
   justify-self: center;
+  text-align: center;
+  line-height: 4em;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 1px;
 
   @media (max-width: 450px) {
     display: none;
   }
-`
+`;
 
 export const Tooltip = styled.div`
   /* Tooltip container */
@@ -112,7 +119,7 @@ export const Tooltip = styled.div`
   }
   /* Tooltip arrow */
   & span::after {
-    content: ' ';
+    content: " ";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -127,12 +134,12 @@ export const Tooltip = styled.div`
     visibility: visible;
     opacity: 1;
   }
-`
+`;
 
 const SiteInfo = styled.div`
   text-align: center;
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
-`
+`;
 
-export default Layout
+export default Layout;

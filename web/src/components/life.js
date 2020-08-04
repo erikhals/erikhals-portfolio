@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import {Link} from 'gatsby'
-import {BlueBG, NavButton} from './layout'
-import {buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
-import img from '../images/wood_texture.jpg'
+import React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
+import { BlueBG } from "./layout";
+import { buildImageObj } from "../lib/helpers";
+import { imageUrlFor } from "../lib/image-url";
+import img from "../images/wood_texture.jpg";
 
 const Life = props => {
   return (
@@ -22,28 +22,24 @@ const Life = props => {
               />
             </FramedPicture>
           ))}
-
         <Shelf />
       </EducationGrid>
-      <NavButton to='/.' right>
-        Home
-      </NavButton>
     </LifePage>
-  )
-}
+  );
+};
 const LifePage = styled.div`
   padding: 10em;
   @media (max-width: 450px) {
     padding: 1em;
   }
-`
+`;
 const EducationGrid = styled.div`
   display: grid;
   width: 100%;
   height: 100%;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 1em;
-`
+`;
 const FramedPicture = styled(Link)`
   width: 100%;
   align-self: end;
@@ -58,12 +54,12 @@ const FramedPicture = styled(Link)`
     object-fit: contain;
     width: 100%;
   }
-`
+`;
 const Shelf = styled.div`
   height: 2em;
   width: 100%;
   grid-column-start: 1;
   grid-column-end: -1;
   background-image: url(${img});
-`
-export default Life
+`;
+export default Life;

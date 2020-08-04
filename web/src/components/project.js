@@ -1,16 +1,17 @@
-import {format, distanceInWords, differenceInDays} from 'date-fns'
-import React from 'react'
-import {Link} from 'gatsby'
-import styled from 'styled-components'
-import Video from 'sanity-mux-player'
-import {buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
-import BlockContent from './block-content'
-import YoutubePreview from './youtube'
-import Container from './container'
-import * as S from './typography'
+import { format, distanceInWords, differenceInDays } from "date-fns";
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import Video from "sanity-mux-player";
+import { buildImageObj } from "../lib/helpers";
+import { imageUrlFor } from "../lib/image-url";
+import { BlueBG } from "./layout";
+import BlockContent from "./block-content";
+import YoutubePreview from "./youtube";
+import Container from "./container";
+import * as S from "./typography";
 
-function Project (props) {
+function Project(props) {
   const {
     _rawBody,
     title,
@@ -23,35 +24,22 @@ function Project (props) {
     publishedAt,
     relatedProjects,
     category
-  } = props
+  } = props;
 
   const mainVideoData = {
     url: videoLink
-  }
-
-  let backLink = '/'
-
-  switch (category.title) {
-    case 'Education':
-      backLink = '/life'
-      break
-    case 'Life':
-      backLink = '/life'
-      break
-    case 'Work':
-      backLink = '/work'
-      break
-  }
+  };
 
   return (
     <article>
+      <BlueBG />
       {!videoLink && !video && mainImage && mainImage.asset && (
         <MainImage>
           <img
             src={imageUrlFor(buildImageObj(mainImage))
               .width(1200)
               .height(Math.floor((9 / 16) * 1200))
-              .fit('crop')
+              .fit("crop")
               .url()}
             alt={mainImage.alt}
           />
@@ -75,7 +63,6 @@ function Project (props) {
       )}
 
       <Container>
-        <Link to={backLink}>{category.title}</Link>
         <Grid>
           <MainContent>
             <S.Title1>{title}</S.Title1>
@@ -86,7 +73,7 @@ function Project (props) {
               <PublishedAt>
                 {differenceInDays(new Date(publishedAt), new Date()) > 3
                   ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM Do YYYY')}
+                  : format(new Date(publishedAt), "MMMM Do YYYY")}
               </PublishedAt>
             )}
             {places && places.length > 0 && (
@@ -120,7 +107,7 @@ function Project (props) {
                 <ul>
                   {softwares.map(software => (
                     <ListItem key={software._id}>
-                      <a href={software.link} target='_blank'>
+                      <a href={software.link} target="_blank">
                         <img
                           src={software.logo.asset.fixed.src}
                           alt={software.title}
@@ -155,7 +142,7 @@ function Project (props) {
         </Grid>
       </Container>
     </article>
-  )
+  );
 }
 
 const MainContent = styled.div`
@@ -168,7 +155,7 @@ const MainContent = styled.div`
       }
     }
   }
-`
+`;
 
 const MainImage = styled.div`
   position: relative;
@@ -188,7 +175,7 @@ const MainImage = styled.div`
     width: 960px;
     margin: auto;
   }
-`
+`;
 
 const MainVideo = styled.div`
   position: relative;
@@ -209,7 +196,7 @@ const MainVideo = styled.div`
     margin: auto;
     padding-top: 540px;
   }
-`
+`;
 
 const PlaceLogo = styled.li`
   & img {
@@ -217,7 +204,7 @@ const PlaceLogo = styled.li`
     height: 100%;
     object-fit: contain;
   }
-`
+`;
 
 const Categories = styled.div`
   border-top: 1px solid var(--color-very-light-gray);
@@ -232,16 +219,16 @@ const Categories = styled.div`
   & ul li {
     padding: 0.25rem 0;
   }
-`
+`;
 
 const ListHeadline = styled(S.Base)`
   margin: 0.5rem 0 0;
-`
+`;
 
 const PublishedAt = styled(S.Small)`
   margin: 1.5rem 0 3rem;
   color: var(--color-gray);
-`
+`;
 
 const ListItem = styled.li`
   position: relative;
@@ -263,7 +250,7 @@ const ListItem = styled.li`
   :hover a {
     text-decoration: underline;
   }
-`
+`;
 
 const RelatedProjects = styled.div`
   border-top: 1px solid var(--color-very-light-gray);
@@ -281,7 +268,7 @@ const RelatedProjects = styled.div`
     text-decoration: none;
     padding: 0.25rem 0;
   }
-`
+`;
 
 const Grid = styled.div`
   display: grid;
@@ -291,6 +278,6 @@ const Grid = styled.div`
   @media (min-width: 675px) {
     grid-template-columns: 3fr 1fr;
   }
-`
+`;
 
-export default Project
+export default Project;

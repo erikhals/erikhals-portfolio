@@ -30,6 +30,11 @@ export default {
       name: 'bio',
       title: 'Bio',
       type: 'bioPortableText'
+    },
+    {
+      name: 'showreel',
+      title: 'Showreel',
+      type: 'mux.video'
     }
   ],
   preview: {

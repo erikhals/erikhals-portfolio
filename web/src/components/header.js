@@ -1,36 +1,36 @@
-import {Link} from 'gatsby'
-import React from 'react'
-import styled, {css} from 'styled-components'
-import Icon from './icon'
+import { Link } from "gatsby";
+import React from "react";
+import styled, { css } from "styled-components";
+import Icon from "./icon";
 
-const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
   <HeaderRoot>
     <HeaderWrapper>
+      <Branding>
+        <Link to="/">Erik Hals</Link>
+      </Branding>
       <ToggleNavButton onClick={() => (showNav ? onHideNav() : onShowNav())}>
-        <Icon symbol='hamburger' />
+        <Icon symbol="hamburger" />
       </ToggleNavButton>
       <Nav showNav={showNav}>
         <ul>
           <li>
-            <Link to='/life/'>Life</Link>
+            <Link to="/work/">Work</Link>
           </li>
           <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/work/'>Work</Link>
+            <Link to="/life/">Life</Link>
           </li>
         </ul>
       </Nav>
     </HeaderWrapper>
   </HeaderRoot>
-)
+);
 
 const HeaderRoot = styled.div`
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 100;
-`
+`;
 
 const HeaderWrapper = styled.div`
   box-sizing: border-box;
@@ -41,7 +41,7 @@ const HeaderWrapper = styled.div`
   @media (min-width: 450px) {
     padding: 1.5em 1.5em;
   }
-`
+`;
 
 const Branding = styled.div`
   font-weight: 600;
@@ -52,24 +52,26 @@ const Branding = styled.div`
     padding: 0.5em;
     color: inherit;
     text-decoration: none;
+    color: var(--color-accent);
 
     @media (hover: hover) {
       &:hover {
-        color: var(--color-accent);
+        color: var(--color-white);
       }
     }
   }
-`
+`;
 
 const ToggleNavButton = styled.button`
   appearance: none;
   font-size: 25px;
   border: none;
-  background: none;
+  background: var(--color-accent);
   margin: 0;
   padding: calc(14 / 17 / 2 * 1rem);
   outline: none;
   color: inherit;
+  justify-self: end;
   & svg {
     display: block;
     fill: inherit;
@@ -78,7 +80,7 @@ const ToggleNavButton = styled.button`
   @media (min-width: 450px) {
     display: none;
   }
-`
+`;
 
 const Nav = styled.nav`
   ${props =>
@@ -96,13 +98,13 @@ const Nav = styled.nav`
 
   & ul li a {
     display: block;
-    color: inherit;
+    color: var(--color-accent);
     text-decoration: none;
   }
 
   @media (hover: hover) {
     & ul li a:hover {
-      color: var(--color-accent);
+      color: var(--color-white);
     }
   }
 
@@ -125,7 +127,7 @@ const Nav = styled.nav`
   }
 
   @media (min-width: 450px) {
-    display: none;
+    display: block;
 
     & ul {
       list-style: none;
@@ -137,5 +139,5 @@ const Nav = styled.nav`
       padding: 0.5rem;
     }
   }
-`
-export default Header
+`;
+export default Header;
