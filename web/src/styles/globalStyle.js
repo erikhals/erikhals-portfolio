@@ -43,7 +43,7 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   background: var(--color-white);
-  color: var(--color-white);
+  color: var(--color-black);
   margin: 0;
 }
 

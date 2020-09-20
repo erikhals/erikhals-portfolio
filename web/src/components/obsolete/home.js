@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
-import { BlueBG, NavButton, Tooltip } from "./layout";
+import { BlueBG, NavButton, Tooltip } from "../layout";
 import img from "../images/wood_texture.jpg";
 
 const Home = props => {
@@ -12,34 +12,26 @@ const Home = props => {
         <h1>Hello!</h1>
         <p>{props.bio}</p>
       </Greeting>
-      <Cap />
-      <MacBook>
-        <StickerGrid>
-          {props.software &&
-            props.software.map(({ node }) => {
-              const randomRot = (Math.random() - 0.5) * 2;
-              return (
-                <Tooltip>
-                  <Sticker key={node.title} randomRot={randomRot}>
-                    <img src={node.logo.asset.fixed.src} />
-                    <span>
-                      <a href={node.link} target="_blank">
-                        {node.title}
-                      </a>
-                    </span>
-                  </Sticker>
-                </Tooltip>
-              );
-            })}
-        </StickerGrid>
-      </MacBook>
-      <Table />
+
+      <WorkGrid>
+        {props.nodes &&
+          props.nodes.map(node => (
+            <Picture to={`/project/${node.slug.current}`} key={node.id}>
+              <img
+                src={imageUrlFor(buildImageObj(node.mainImage))
+                  .width(600)
+                  .url()}
+                alt={node.mainImage.alt}
+              />
+            </Picture>
+          ))}
+      </WorkGrid>
     </HomeGrid>
   );
 };
 const HomeGrid = styled.div`
   display: grid;
-  height: 100vh;
+  height: 100%;
   padding: 0 20vw;
   grid-template-columns: 1fr;
   grid-template-rows: 10fr 1fr 1fr auto auto;
@@ -49,8 +41,48 @@ const HomeGrid = styled.div`
 `;
 const Greeting = styled.div`
   color: #56ccf2;
-  max-width: 25em;
   align-self: center;
+  max-width: 40rem;
+  & h1 {
+    line-height: 6rem;
+    font-size: 6rem;
+    font-weight: 1000;
+    margin: 0;
+  }
+`;
+
+const WorkGrid = styled.div`
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fill, 120px);
+  grid-auto-flow: dense;
+  gap: 1em;
+  & li {
+    list-style: none;
+  }
+  @media (max-width: 650px) {
+    grid-template-columns: minmax(100%, 1fr);
+  }
+`;
+const Picture = styled(Link)`
+  width: 100%;
+  filter: drop-shadow(1px 1px 1px #111);
+  &:nth-child(1) {
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 2;
+    @media (max-width: 960px) {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+  & img {
+    box-sizing: border-box;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 `;
 const Cap = styled.div`
   background: #304352; /* fallback for old browsers */

@@ -9,7 +9,6 @@ import img from "../images/wood_texture.jpg";
 const Life = props => {
   return (
     <LifePage>
-      <BlueBG />
       <EducationGrid>
         {props.education &&
           props.education.map(node => (

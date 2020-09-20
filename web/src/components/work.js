@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { BlueBG } from "./layout";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 
 const Work = props => (
+  //TODO: work category sorting
   <WorkPage>
-    <BlueBG />
+    <Greeting>
+      <h1>Hello!</h1>
+      <p>{props.bio}</p>
+    </Greeting>
+
     <WorkGrid>
       {props.nodes &&
         props.nodes.map(node => (
@@ -34,6 +38,18 @@ const WorkPage = styled.div`
   }
 `;
 
+const Greeting = styled.div`
+  align-self: center;
+  max-width: 40rem;
+  margin: 5rem 0;
+  & h1 {
+    line-height: 6rem;
+    font-size: 6rem;
+    font-weight: 1000;
+    margin: 0;
+  }
+`;
+
 const WorkGrid = styled.div`
   display: grid;
   width: 100%;
@@ -51,7 +67,6 @@ const WorkGrid = styled.div`
 `;
 const Picture = styled(Link)`
   width: 100%;
-  filter: drop-shadow(1px 1px 1px #111);
   &:nth-child(1) {
     grid-column: 2 / span 2;
     grid-row: 2 / span 2;

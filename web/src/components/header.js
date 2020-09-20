@@ -15,10 +15,13 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
       <Nav showNav={showNav}>
         <ul>
           <li>
-            <Link to="/work/">Work</Link>
+            <Link to="/">Work</Link>
           </li>
           <li>
-            <Link to="/life/">Life</Link>
+            <Link to="/about/">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </Nav>
@@ -27,7 +30,8 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
 );
 
 const HeaderRoot = styled.div`
-  position: absolute;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.4);
   width: 100%;
   z-index: 100;
 `;
@@ -52,11 +56,11 @@ const Branding = styled.div`
     padding: 0.5em;
     color: inherit;
     text-decoration: none;
-    color: var(--color-accent);
+    color: var(--color-black);
 
     @media (hover: hover) {
       &:hover {
-        color: var(--color-white);
+        color: var(--color-accent);
       }
     }
   }
@@ -98,13 +102,13 @@ const Nav = styled.nav`
 
   & ul li a {
     display: block;
-    color: var(--color-accent);
+    color: var(--color-black);
     text-decoration: none;
   }
 
   @media (hover: hover) {
     & ul li a:hover {
-      color: var(--color-white);
+      color: var(--color-accent);
     }
   }
 

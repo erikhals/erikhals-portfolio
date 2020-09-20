@@ -32,36 +32,36 @@ function Project(props) {
 
   return (
     <article>
-      <BlueBG />
-      {!videoLink && !video && mainImage && mainImage.asset && (
-        <MainImage>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit("crop")
-              .url()}
-            alt={mainImage.alt}
-          />
-        </MainImage>
-      )}
+      <TopWrapper>
+        {!videoLink && !video && mainImage && mainImage.asset && (
+          <MainImage>
+            <img
+              src={imageUrlFor(buildImageObj(mainImage))
+                .width(1200)
+                .height(Math.floor((9 / 16) * 1200))
+                .fit("crop")
+                .url()}
+              alt={mainImage.alt}
+            />
+          </MainImage>
+        )}
 
-      {!video && videoLink && (
-        <MainVideo>
-          <YoutubePreview node={mainVideoData} modestbranding />
-        </MainVideo>
-      )}
-      {video && (
-        <MainVideo>
-          <Video
-            assetDocument={video.asset}
-            autoload
-            autoplay={false}
-            showControls
-          />
-        </MainVideo>
-      )}
-
+        {!video && videoLink && (
+          <MainVideo>
+            <YoutubePreview node={mainVideoData} modestbranding />
+          </MainVideo>
+        )}
+        {video && (
+          <MainVideo>
+            <Video
+              assetDocument={video.asset}
+              autoload
+              autoplay={false}
+              showControls
+            />
+          </MainVideo>
+        )}
+      </TopWrapper>
       <Container>
         <Grid>
           <MainContent>
@@ -145,6 +145,10 @@ function Project(props) {
   );
 }
 
+const TopWrapper = styled.article`
+  padding-top: 6rem;
+`;
+
 const MainContent = styled.div`
   & a {
     color: var(--color-accent);
@@ -160,10 +164,9 @@ const MainContent = styled.div`
 const MainImage = styled.div`
   position: relative;
   background: #eee;
-  padding-bottom: calc(9 / 16 * 100%);
 
   & img {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
