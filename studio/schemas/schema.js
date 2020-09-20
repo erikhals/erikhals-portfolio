@@ -9,6 +9,7 @@ import place from './documents/place'
 import skill from './documents/skill'
 import person from './documents/person'
 import project from './documents/project'
+import education from './documents/education'
 import siteSettings from './documents/siteSettings'
 import category from './documents/category'
 import software from './documents/software'
@@ -42,6 +43,7 @@ export default createSchema({
     skill,
     person,
     project,
+    education,
     siteSettings,
     category,
     software
