@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import {
   mapEdgesToNodes,
@@ -24,13 +24,16 @@ export const query = graphql`
         _rawBio
       }
     }
+    skills: allSanitySkill {
+      edges {
+        node {
+          title
+        }
+      }
+    }
     projects: allSanityProject(
       sort: { fields: [publishedAt], order: DESC }
-      filter: {
-        slug: { current: { ne: null } }
-        publishedAt: { ne: null }
-        category: { title: { eq: "Work" } }
-      }
+      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
     ) {
       edges {
         node {
@@ -99,6 +102,8 @@ const IndexPage = props => {
     );
   }
 
+  const [skill, setSkill] = useState("");
+
   const site = (data || {}).site;
   const bio = (data || {}).sanitySiteSettings.author._rawBio[0].children[0]
     .text;
@@ -108,12 +113,13 @@ const IndexPage = props => {
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
 
+  const skillsNodes = (data || {}).skills ? mapEdgesToNodes(data.skills) : [];
+
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
-
   return (
     <Layout>
       <SEO
@@ -122,7 +128,13 @@ const IndexPage = props => {
         keywords={site.keywords}
       />
       <h1 hidden>Welcome to {site.title}</h1>
-      {projectNodes && <Work title="Work" nodes={projectNodes} bio={bio} />}
+
+      {projectNodes && (
+        <Work title="Work" nodes={projectNodes} bio={bio} skill={skill} />
+      )}
+      {skillsNodes.map(node => (
+        <button onClick={() => setSkill(node.title)}>{node.title}</button>
+      ))}
     </Layout>
   );
 };

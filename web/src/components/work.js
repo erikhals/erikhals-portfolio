@@ -5,7 +5,6 @@ import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 
 const Work = props => (
-  //TODO: work category sorting
   <WorkPage>
     <Greeting>
       <h1>Hello!</h1>
@@ -14,16 +13,24 @@ const Work = props => (
 
     <WorkGrid>
       {props.nodes &&
-        props.nodes.map(node => (
-          <Picture to={`/project/${node.slug.current}`} key={node.id}>
-            <img
-              src={imageUrlFor(buildImageObj(node.mainImage))
-                .width(600)
-                .url()}
-              alt={node.mainImage.alt}
-            />
-          </Picture>
-        ))}
+        props.nodes
+          .filter(
+            node =>
+              !props.skill ||
+              node.skills.find(skill => skill.title === props.skill)
+          )
+          .map(node => {
+            return (
+              <Picture to={`/project/${node.slug.current}`} key={node.id}>
+                <img
+                  src={imageUrlFor(buildImageObj(node.mainImage))
+                    .width(600)
+                    .url()}
+                  alt={node.mainImage.alt}
+                />
+              </Picture>
+            );
+          })}
     </WorkGrid>
   </WorkPage>
 );
@@ -67,7 +74,7 @@ const WorkGrid = styled.div`
 `;
 const Picture = styled(Link)`
   width: 100%;
-  &:nth-child(1) {
+  &:nth-child(3) {
     grid-column: 2 / span 2;
     grid-row: 2 / span 2;
     @media (max-width: 960px) {
