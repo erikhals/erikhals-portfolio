@@ -102,8 +102,10 @@ const IndexPage = props => {
     );
   }
 
+  // Set the category to sort projects by
   const [skill, setSkill] = useState("");
 
+  // Clean up the data
   const site = (data || {}).site;
   const bio = (data || {}).sanitySiteSettings.author._rawBio[0].children[0]
     .text;
@@ -113,7 +115,13 @@ const IndexPage = props => {
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
 
-  const skillsNodes = (data || {}).skills ? mapEdgesToNodes(data.skills) : [];
+  // Get skills from projects and remove duplicates
+  const skills = projectNodes
+    .flatMap(node => node.skills)
+    .filter(
+      (skill, index, self) =>
+        index === self.findIndex(s => s.title === skill.title)
+    );
 
   if (!site) {
     throw new Error(
@@ -130,11 +138,15 @@ const IndexPage = props => {
       <h1 hidden>Welcome to {site.title}</h1>
 
       {projectNodes && (
-        <Work title="Work" nodes={projectNodes} bio={bio} skill={skill} />
+        <Work
+          title="Work"
+          nodes={projectNodes}
+          bio={bio}
+          skill={skill}
+          skills={skills}
+          setSkill={setSkill}
+        />
       )}
-      {skillsNodes.map(node => (
-        <button onClick={() => setSkill(node.title)}>{node.title}</button>
-      ))}
     </Layout>
   );
 };

@@ -7,10 +7,22 @@ import { imageUrlFor } from "../lib/image-url";
 const Work = props => (
   <WorkPage>
     <Greeting>
-      <h1>Hello!</h1>
+      <h1>Designer / Developer</h1>
       <p>{props.bio}</p>
     </Greeting>
-
+    {props.skills && (
+      <SkillSelector>
+        {props.skills.map(node => (
+          <SkillButton
+            key={node.title}
+            onClick={() => props.setSkill(node.title)}
+          >
+            <img src={node.logo.asset.fluid.src} />
+            <span>{node.title}</span>
+          </SkillButton>
+        ))}
+      </SkillSelector>
+    )}
     <WorkGrid>
       {props.nodes &&
         props.nodes
@@ -37,6 +49,9 @@ const Work = props => (
 
 const WorkPage = styled.div`
   padding: 8em 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   @media (max-width: 650px) {
     padding: 6em;
   }
@@ -45,10 +60,58 @@ const WorkPage = styled.div`
   }
 `;
 
+const SkillSelector = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+const SkillButton = styled.button`
+  margin: 5px;
+  position: relative;
+  padding: 0.7em;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  /* Tooltip text */
+  & span {
+    visibility: hidden;
+    width: 120px;
+    background-color: #567;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  :hover span {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: black;
+  }
+  & img {
+    width: 40px;
+    height: 40px;
+  }
+`;
+
 const Greeting = styled.div`
-  align-self: center;
-  max-width: 40rem;
-  margin: 5rem 0;
+  text-align: center;
+  margin: auto;
+  padding: 5rem 0;
   & h1 {
     line-height: 6rem;
     font-size: 6rem;
@@ -64,6 +127,7 @@ const WorkGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-template-rows: repeat(auto-fill, 120px);
   grid-auto-flow: dense;
+  justify-items: center;
   gap: 1em;
   & li {
     list-style: none;
@@ -74,9 +138,10 @@ const WorkGrid = styled.div`
 `;
 const Picture = styled(Link)`
   width: 100%;
-  &:nth-child(3) {
-    grid-column: 2 / span 2;
-    grid-row: 2 / span 2;
+
+  &:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
     @media (max-width: 960px) {
       grid-column: auto;
       grid-row: auto;
@@ -84,6 +149,7 @@ const Picture = styled(Link)`
   }
   & img {
     box-sizing: border-box;
+    border-radius: 5px;
     object-fit: cover;
     width: 100%;
     height: 100%;
