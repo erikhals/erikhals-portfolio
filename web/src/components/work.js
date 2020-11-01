@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
@@ -24,25 +25,36 @@ const Work = props => (
       </SkillSelector>
     )}
     <WorkGrid>
-      {props.nodes &&
-        props.nodes
-          .filter(
-            node =>
-              !props.skill ||
-              node.skills.find(skill => skill.title === props.skill)
-          )
-          .map(node => {
-            return (
-              <Picture to={`/project/${node.slug.current}`} key={node.id}>
-                <img
-                  src={imageUrlFor(buildImageObj(node.mainImage))
-                    .width(600)
-                    .url()}
-                  alt={node.mainImage.alt}
-                />
-              </Picture>
-            );
-          })}
+      <AnimateSharedLayout>
+        <AnimatePresence>
+          {props.nodes &&
+            props.nodes
+              .filter(
+                node =>
+                  !props.skill ||
+                  node.skills.find(skill => skill.title === props.skill)
+              )
+              .map(node => {
+                return (
+                  <Picture
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    to={`/project/${node.slug.current}`}
+                    key={node.id}
+                  >
+                    <img
+                      src={imageUrlFor(buildImageObj(node.mainImage))
+                        .width(600)
+                        .url()}
+                      alt={node.mainImage.alt}
+                    />
+                  </Picture>
+                );
+              })}
+        </AnimatePresence>
+      </AnimateSharedLayout>
     </WorkGrid>
   </WorkPage>
 );
@@ -136,7 +148,8 @@ const WorkGrid = styled.div`
     grid-template-columns: minmax(100%, 1fr);
   }
 `;
-const Picture = styled(Link)`
+
+const Picture = styled(motion.custom(Link))`
   width: 100%;
 
   &:nth-child(1) {
