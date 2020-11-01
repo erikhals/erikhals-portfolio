@@ -1,6 +1,6 @@
 import Figure from "./figure";
 import Youtube from "./youtube";
-import Video from "sanity-mux-player";
+import Video from "./muxvideo";
 
 const serializers = {
   types: {
