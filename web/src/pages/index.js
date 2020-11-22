@@ -34,7 +34,7 @@ const IndexPage = props => {
   const site = (data || {}).site;
   const bio = (data || {}).sanitySiteSettings.author._rawBio[0].children[0]
     .text;
-  const background = (data || {}).sanitySiteSettings.homeImage.asset.fluid.src;
+  // const background = (data || {}).sanitySiteSettings.homeImage.asset.fluid.src;
 
   //Error if site settings not found
   if (!site) {
