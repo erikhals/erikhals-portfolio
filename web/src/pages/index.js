@@ -45,7 +45,7 @@ const IndexPage = props => {
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
-
+  console.log(bio);
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -59,7 +59,7 @@ const IndexPage = props => {
         keywords={site.keywords}
       />
       <h1 hidden>Welcome to {site.title}</h1>
-      <Home />
+      <Home bio={bio} />
     </Layout>
   );
 };

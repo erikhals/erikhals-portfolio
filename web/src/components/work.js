@@ -4,7 +4,7 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
-import img from "../images/work_BG.jpg";
+import img from "../images/Work_BG.jpg";
 
 const Work = props => (
   <WorkPage>
