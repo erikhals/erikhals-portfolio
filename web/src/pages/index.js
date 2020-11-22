@@ -52,7 +52,7 @@ const IndexPage = props => {
         keywords={site.keywords}
       />
       <h1 hidden>Welcome to {site.title}</h1>
-      <Home bio={bio} background={background} />
+      <Home bio={bio} />
     </Layout>
   );
 };

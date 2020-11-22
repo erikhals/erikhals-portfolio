@@ -8,6 +8,11 @@ import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from "../lib/helpers";
 
 export const query = graphql`
   query AboutPageQuery {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      description
+      keywords
+    }
     education: allSanityProject(
       limit: 3
       sort: { fields: [publishedAt], order: ASC }
@@ -66,6 +71,7 @@ const AboutPage = props => {
       </Layout>
     );
   }
+  const site = (data || {}).site;
   const educationNodes =
     data &&
     data.education &&
@@ -79,7 +85,7 @@ const AboutPage = props => {
   return (
     <Layout>
       <SEO title="Life" />
-      <About education={educationNodes} />
+      <About education={educationNodes} site={site} />
     </Layout>
   );
 };
