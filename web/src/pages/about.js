@@ -6,8 +6,6 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from "../lib/helpers";
 
-import { ResponsiveTitle1 } from "../components/typography";
-
 export const query = graphql`
   query AboutPageQuery {
     education: allSanityProject(
@@ -73,7 +71,11 @@ const AboutPage = props => {
     data.education &&
     mapEdgesToNodes(data.education).filter(filterOutDocsWithoutSlugs);
 
-  console.log(educationNodes);
+  if (!site) {
+    throw new Error(
+      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
+    );
+  }
   return (
     <Layout>
       <SEO title="Life" />

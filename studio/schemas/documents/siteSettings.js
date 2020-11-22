@@ -25,7 +25,7 @@ export default {
       type: 'array',
       title: 'Keywords',
       description: 'Add keywords that describes your portfolio.',
-      of: [{type: 'string'}],
+      of: [{ type: 'string' }],
       options: {
         layout: 'tags'
       }
@@ -35,7 +35,25 @@ export default {
       type: 'reference',
       description: 'Publish an author and set a reference to them here.',
       title: 'Author',
-      to: [{type: 'person'}]
+      to: [{ type: 'person' }]
+    },
+    {
+      name: 'homeImage',
+      type: 'image',
+      title: 'Home Background',
+      options: { metadata: ['lqip'] }
+    },
+    {
+      name: 'workImage',
+      type: 'image',
+      title: 'Work Background',
+      options: { metadata: ['lqip'] }
+    },
+    {
+      name: 'aboutImage',
+      type: 'image',
+      title: 'About Background',
+      options: { metadata: ['lqip'] }
     }
   ]
 }
