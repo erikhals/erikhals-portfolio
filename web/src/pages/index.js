@@ -7,9 +7,8 @@ import {
 } from "../lib/helpers";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import ProjectPreviewGrid from "../components/project-preview-grid";
-import Work from "../components/work";
 import SEO from "../components/seo";
+import Home from "../components/home";
 import Layout from "../containers/layout";
 
 export const query = graphql`
@@ -22,71 +21,6 @@ export const query = graphql`
     sanitySiteSettings {
       author {
         _rawBio
-      }
-    }
-    skills: allSanitySkill {
-      edges {
-        node {
-          title
-        }
-      }
-    }
-    projects: allSanityProject(
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          mainImage {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-          forClient
-          skills {
-            title
-            logo {
-              asset {
-                fluid(maxWidth: 100) {
-                  src
-                }
-              }
-            }
-          }
-          softwares {
-            title
-            logo {
-              asset {
-                fluid(maxWidth: 100) {
-                  src
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -102,9 +36,6 @@ const IndexPage = props => {
     );
   }
 
-  // Set the category to sort projects by
-  const [skill, setSkill] = useState("");
-
   // Clean up the data
   const site = (data || {}).site;
   const bio = (data || {}).sanitySiteSettings.author._rawBio[0].children[0]
@@ -114,14 +45,6 @@ const IndexPage = props => {
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
-
-  // Get skills from projects and remove duplicates
-  const skills = projectNodes
-    .flatMap(node => node.skills)
-    .filter(
-      (skill, index, self) =>
-        index === self.findIndex(s => s.title === skill.title)
-    );
 
   if (!site) {
     throw new Error(
@@ -136,17 +59,7 @@ const IndexPage = props => {
         keywords={site.keywords}
       />
       <h1 hidden>Welcome to {site.title}</h1>
-
-      {projectNodes && (
-        <Work
-          title="Work"
-          nodes={projectNodes}
-          bio={bio}
-          skill={skill}
-          skills={skills}
-          setSkill={setSkill}
-        />
-      )}
+      <Home />
     </Layout>
   );
 };

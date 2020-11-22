@@ -15,7 +15,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
       <Nav showNav={showNav}>
         <ul>
           <li>
-            <Link to="/">Work</Link>
+            <Link to="/work">Work</Link>
           </li>
           <li>
             <Link to="/about/">About</Link>
@@ -28,7 +28,6 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
 
 const HeaderRoot = styled.div`
   position: fixed;
-  background: rgba(255, 255, 255, 0.4);
   width: 100%;
   z-index: 100;
 `;

@@ -1,9 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import ProjectPreviewGrid from "../components/project-preview-grid";
-import Life from "../components/life";
+import About from "../components/about";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from "../lib/helpers";
@@ -74,12 +72,12 @@ const AboutPage = props => {
     data &&
     data.education &&
     mapEdgesToNodes(data.education).filter(filterOutDocsWithoutSlugs);
+
+  console.log(educationNodes);
   return (
     <Layout>
       <SEO title="Life" />
-      {educationNodes && educationNodes.length > 0 && (
-        <Life education={educationNodes} />
-      )}
+      <About education={educationNodes} />
     </Layout>
   );
 };

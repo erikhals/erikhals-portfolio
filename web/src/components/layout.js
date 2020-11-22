@@ -72,7 +72,6 @@ export const NavButton = styled(Link)`
   position: fixed;
   display: inline-block;
   top: 50%;
-  ${props => (props.right ? "right: 5vw;" : "left: 5vw;")}
   width: 4em;
   height: 4em;
   justify-self: center;

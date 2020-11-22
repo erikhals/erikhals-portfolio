@@ -4,26 +4,10 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
+import img from "../images/work_BG.jpg";
 
 const Work = props => (
   <WorkPage>
-    <Greeting>
-      <h1>Designer / Developer</h1>
-      <p>{props.bio}</p>
-    </Greeting>
-    {props.skills && (
-      <SkillSelector>
-        {props.skills.map(node => (
-          <SkillButton
-            key={node.title}
-            onClick={() => props.setSkill(node.title)}
-          >
-            <img src={node.logo.asset.fluid.src} />
-            <span>{node.title}</span>
-          </SkillButton>
-        ))}
-      </SkillSelector>
-    )}
     <WorkGrid>
       <AnimateSharedLayout>
         <AnimatePresence>
@@ -56,11 +40,31 @@ const Work = props => (
         </AnimatePresence>
       </AnimateSharedLayout>
     </WorkGrid>
+    {props.skills && (
+      <SkillSelector>
+        {props.skills.map(node => (
+          <SkillButton
+            key={node.title}
+            onClick={() => props.setSkill(node.title)}
+          >
+            <img src={node.logo.asset.fluid.src} />
+            <span>{node.title}</span>
+          </SkillButton>
+        ))}
+      </SkillSelector>
+    )}
   </WorkPage>
 );
 
 const WorkPage = styled.div`
   padding: 8em 10em;
+  background-image: url(${img});
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,15 +77,19 @@ const WorkPage = styled.div`
 `;
 
 const SkillSelector = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 `;
 const SkillButton = styled.button`
   margin: 5px;
+  background: none;
   position: relative;
   padding: 0.7em;
-  background-color: white;
   border: none;
   cursor: pointer;
   /* Tooltip text */
@@ -93,7 +101,6 @@ const SkillButton = styled.button`
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-
     /* Position the tooltip text */
     position: absolute;
     z-index: 1;
@@ -117,18 +124,6 @@ const SkillButton = styled.button`
   & img {
     width: 40px;
     height: 40px;
-  }
-`;
-
-const Greeting = styled.div`
-  text-align: center;
-  margin: auto;
-  padding: 5rem 0;
-  & h1 {
-    line-height: 6rem;
-    font-size: 6rem;
-    font-weight: 1000;
-    margin: 0;
   }
 `;
 
