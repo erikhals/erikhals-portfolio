@@ -35,24 +35,6 @@ export default {
       name: 'showreel',
       title: 'Showreel',
       type: 'mux.video'
-    },
-    {
-      name: 'homeImage',
-      type: 'image',
-      title: 'Home Background',
-      options: { metadata: ['lqip'] }
-    },
-    {
-      name: 'workImage',
-      type: 'image',
-      title: 'Work Background',
-      options: { metadata: ['lqip'] }
-    },
-    {
-      name: 'aboutImage',
-      type: 'image',
-      title: 'About Background',
-      options: { metadata: ['lqip'] }
     }
   ],
   preview: {
