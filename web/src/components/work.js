@@ -8,6 +8,7 @@ import img from "../images/Work_BG.jpg";
 
 const Work = props => (
   <WorkPage>
+    <Background />
     <WorkGrid>
       <AnimateSharedLayout>
         <AnimatePresence>
@@ -21,7 +22,7 @@ const Work = props => (
               .map(node => {
                 return (
                   <Picture
-                    layout
+                    layout={"true"}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -56,15 +57,20 @@ const Work = props => (
   </WorkPage>
 );
 
-const WorkPage = styled.div`
-  padding: 8em 10em;
-  background-image: url(${img});
-  background-size: cover;
+const Background = styled.div`
   position: fixed;
+  z-index: -1;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
+  left: 0;
+  background-image: url(${img});
+  background-size: cover;
+  background-position: 50% 50%;
+`;
+
+const WorkPage = styled.div`
+  padding: 8em 10em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,9 +82,25 @@ const WorkPage = styled.div`
   }
 `;
 
+const WorkGrid = styled.div`
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fill, 120px);
+  grid-auto-flow: dense;
+  justify-items: center;
+  gap: 1em;
+  & li {
+    list-style: none;
+  }
+  @media (max-width: 650px) {
+    grid-template-columns: minmax(100%, 1fr);
+  }
+`;
+
 const SkillSelector = styled.div`
   position: fixed;
-  bottom: 0;
+  bottom: 5vh;
   right: 0;
   left: 0;
   display: flex;
@@ -124,23 +146,6 @@ const SkillButton = styled.button`
   & img {
     width: 40px;
     height: 40px;
-  }
-`;
-
-const WorkGrid = styled.div`
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-template-rows: repeat(auto-fill, 120px);
-  grid-auto-flow: dense;
-  justify-items: center;
-  gap: 1em;
-  & li {
-    list-style: none;
-  }
-  @media (max-width: 650px) {
-    grid-template-columns: minmax(100%, 1fr);
   }
 `;
 
