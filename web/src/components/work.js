@@ -32,6 +32,7 @@ const Work = props => (
                     <img
                       src={imageUrlFor(buildImageObj(node.mainImage))
                         .width(600)
+                        .height(360)
                         .url()}
                       alt={node.mainImage.alt}
                     />
@@ -151,7 +152,7 @@ const SkillButton = styled.button`
 
 const Picture = styled(motion.custom(Link))`
   width: 100%;
-
+  height: 100%;
   &:nth-child(1) {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
