@@ -12,6 +12,11 @@ export default {
       title: 'Title'
     },
     {
+      name: 'developer',
+      type: 'string',
+      title: 'Developer'
+    },
+    {
       name: 'logo',
       type: 'image',
       title: 'Logo'
