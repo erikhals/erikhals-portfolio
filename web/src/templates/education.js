@@ -7,10 +7,9 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query ProjectTemplateQuery($id: String!) {
-    Project: sanityProject(id: { eq: $id }) {
+  query EducationTemplateQuery($id: String!) {
+    Education: sanityEducation(id: { eq: $id }) {
       id
-      publishedAt
       places {
         _id
         title
@@ -74,48 +73,31 @@ export const query = graphql`
         }
         title
       }
-      video {
-        asset {
-          _key
-          _type
-          assetId
-          filename
-          playbackId
-          status
-          thumbTime
-        }
-        _key
-        _type
-      }
-      videoLink
       title
       slug {
         current
-      }
-      category {
-        title
       }
       _rawBody
     }
   }
 `;
 
-const ProjectTemplate = props => {
+const EducationTemplate = props => {
   const { data, errors } = props;
-  const project = data && data.Project;
+  const education = data && data.Education;
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || "Untitled"} />}
+      {education && <SEO title={education.title || "Untitled"} />}
 
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      <Container>{project && <Project {...project} />}</Container>
+      <Container>{education && <Project {...education} />}</Container>
     </Layout>
   );
 };
 
-export default ProjectTemplate;
+export default EducationTemplate;
