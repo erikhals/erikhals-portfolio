@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 import Img from "gatsby-image";
+import { Background } from "./layout";
 
 const About = props => {
   console.log(props);
@@ -14,7 +15,7 @@ const About = props => {
         objectFit="cover"
         objectPosition="50% 50%"
         alt=""
-      ></Background>
+      />
       <StickerWrapper>
         <StickerGrid>
           {props.softwares &&
@@ -49,14 +50,7 @@ const AboutPage = styled.div`
   left: 0;
   overflow: hidden;
 `;
-const Background = styled(Img)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-height: 100vh;
-  z-index: -1;
-`;
+
 const StickerWrapper = styled.div`
   position: absolute;
   top: 50%;

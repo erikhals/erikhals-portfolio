@@ -17,6 +17,14 @@ export const query = graphql`
       description
       keywords
     }
+    background: file(relativePath: { eq: "Work_BG.jpg" }) {
+      id
+      childImageSharp {
+        fluid(jpegQuality: 90) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     skills: allSanitySkill {
       edges {
         node {
@@ -131,6 +139,7 @@ const WorkPage = props => {
       {projectNodes && (
         <Work
           title="Work"
+          background={data.background}
           nodes={projectNodes}
           skill={skill}
           skills={skills}

@@ -5,6 +5,7 @@ import Header from "./header";
 import Helmet from "react-helmet";
 import GlobalStyle from "../styles/globalStyle";
 import favicon from "./icon/favicon.ico";
+import BackgroundImage from "gatsby-background-image";
 
 const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
   <>
@@ -64,6 +65,12 @@ export const BlueBG = styled.div`
     #141e30
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: -100;
+`;
+
+export const Background = styled(BackgroundImage)`
+  position: fixed;
+  min-height: 100vh;
+  z-index: -1;
 `;
 
 export const NavButton = styled(Link)`

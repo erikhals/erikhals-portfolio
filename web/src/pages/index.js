@@ -12,6 +12,14 @@ export const query = graphql`
       description
       keywords
     }
+    background: file(relativePath: { eq: "Home_BG.jpg" }) {
+      id
+      childImageSharp {
+        fluid(jpegQuality: 90) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     sanitySiteSettings {
       author {
         _rawBio
@@ -34,13 +42,10 @@ const IndexPage = props => {
   const site = (data || {}).site;
   const bio = (data || {}).sanitySiteSettings.author._rawBio[0].children[0]
     .text;
-  // const background = (data || {}).sanitySiteSettings.homeImage.asset.fluid.src;
 
   //Error if site settings not found
   if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    );
+    throw new Error("Having some difficulty reaching the content server");
   }
 
   //Loading the view component
@@ -52,7 +57,7 @@ const IndexPage = props => {
         keywords={site.keywords}
       />
       <h1 hidden>Welcome to {site.title}</h1>
-      <Home bio={bio} />
+      <Home bio={bio} background={data.background} />
     </Layout>
   );
 };

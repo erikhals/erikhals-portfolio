@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
-import { buildImageObj } from "../lib/helpers";
-import { imageUrlFor } from "../lib/image-url";
-import img from "../images/Home_BG.jpg";
+import { Background } from "./layout";
 
 const Home = props => (
   <HomePage>
-    <Background>
-      <Greeting>
-        <h1>Digital Designer</h1>
-        <p>{props.bio}</p>
-      </Greeting>
-    </Background>
+    <Background
+      fluid={props.background.childImageSharp.fluid}
+      style={{ backgroundPosition: "80% 50%" }}
+      alt=""
+    />
+    <Greeting>
+      <h1>Digital Designer</h1>
+      <p>{props.bio}</p>
+    </Greeting>
   </HomePage>
 );
 
@@ -24,15 +24,9 @@ const HomePage = styled.div`
   left: 0;
 `;
 
-const Background = styled.div`
-  height: 100vh;
-  background-image: url(${img});
-  background-size: cover;
-  background-position: 80% 50%;
-  position: relative;
-`;
-
 const Greeting = styled.div`
+  position: absolute;
+  top: 0;
   text-align: left;
   margin: auto;
   margin-left: 25vw;

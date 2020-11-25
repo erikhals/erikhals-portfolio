@@ -4,11 +4,10 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
-import img from "../images/Work_BG.jpg";
+import Img from "gatsby-image";
 
 const Work = props => (
   <WorkPage>
-    <Background />
     <WorkGrid>
       <AnimateSharedLayout>
         <AnimatePresence>
@@ -55,22 +54,31 @@ const Work = props => (
         ))}
       </SkillSelector>
     )}
+    <Background
+      fluid={props.background.childImageSharp.fluid}
+      objectFit="cover"
+      objectPosition="50% 50%"
+      style={{ position: "fixed" }}
+      alt=""
+    />
   </WorkPage>
 );
 
-const Background = styled.div`
+const Background = styled(Img)`
   position: fixed;
   z-index: -1;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background-image: url(${img});
-  background-size: cover;
-  background-position: 50% 50%;
 `;
 
 const WorkPage = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   padding: 8em 10em;
   display: flex;
   flex-direction: column;
@@ -101,9 +109,11 @@ const WorkGrid = styled.div`
 
 const SkillSelector = styled.div`
   position: fixed;
-  bottom: 5vh;
+  background: #dddddd;
+
   right: 0;
   left: 0;
+  bottom: 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
