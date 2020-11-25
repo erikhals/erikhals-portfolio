@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Video from "sanity-mux-player";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
-import { BlueBG } from "./layout";
 import BlockContent from "./block-content";
 import YoutubePreview from "./youtube";
 import Container from "./container";

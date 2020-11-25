@@ -60,8 +60,8 @@ export const query = graphql`
           title
           logo {
             asset {
-              fluid {
-                src
+              fluid(maxWidth: 30) {
+                ...GatsbySanityImageFluid
               }
             }
           }

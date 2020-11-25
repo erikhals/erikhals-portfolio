@@ -20,7 +20,7 @@ const About = props => {
           {props.softwares &&
             props.softwares.map(node => (
               <Sticker>
-                <img src={node.logo.asset.fluid.src} />
+                <Img fluid={node.logo.asset.fluid} />
               </Sticker>
             ))}
         </StickerGrid>
@@ -82,13 +82,11 @@ const StickerGrid = styled.div`
 `;
 const Sticker = styled.div`
   transform: rotate(${props => props.randomRot * 15}deg);
-  & img {
-    display: block;
-    object-fit: contain;
-    width: 70%;
-    max-height: 100%;
-  }
-  & img:hover {
+  display: block;
+  object-fit: contain;
+  width: 70%;
+  max-height: 100%;
+  & :hover {
     transform: scale(1.1);
   }
 `;
