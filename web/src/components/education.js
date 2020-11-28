@@ -2,16 +2,14 @@ import { format, distanceInWords, differenceInDays } from "date-fns";
 import React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
-import Video from "sanity-mux-player";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 import BlockContent from "./block-content";
-import YoutubePreview from "./youtube";
 import Container from "./container";
 import { Background, ArticleGrid, LinkBack } from "./layout";
 import * as S from "./typography";
 
-function Project(props) {
+function Education(props) {
   const {
     _rawBody,
     title,
@@ -19,21 +17,14 @@ function Project(props) {
     softwares,
     skills,
     mainImage,
-    videoLink,
-    video,
     publishedAt,
-    relatedProjects,
-    category
+    relatedProjects
   } = props;
 
-  const mainVideoData = {
-    url: videoLink
-  };
-
-  const ProjectBackground = () => {
+  const EducationBackground = () => {
     const data = useStaticQuery(graphql`
-      query ProjectBGQuery {
-        background: file(relativePath: { eq: "Work_BG.jpg" }) {
+      query EducationBGQuery {
+        background: file(relativePath: { eq: "About_BG.jpg" }) {
           id
           childImageSharp {
             fluid(jpegQuality: 90) {
@@ -56,36 +47,18 @@ function Project(props) {
 
   return (
     <article>
-      <ProjectBackground />
-      <LinkBack to="/work" />
+      <EducationBackground />
+      <LinkBack to="/about" />
       <TopWrapper>
-        {!videoLink && !video && mainImage && mainImage.asset && (
-          <MainImage>
+        {mainImage && mainImage.asset && (
+          <Certificate>
             <img
               src={imageUrlFor(buildImageObj(mainImage))
                 .width(1200)
-                .height(Math.floor((9 / 16) * 1200))
-                .fit("crop")
                 .url()}
               alt={mainImage.alt}
             />
-          </MainImage>
-        )}
-
-        {!video && videoLink && (
-          <MainVideo>
-            <YoutubePreview node={mainVideoData} modestbranding />
-          </MainVideo>
-        )}
-        {video && (
-          <MainVideo>
-            <Video
-              assetDocument={video.asset}
-              autoload
-              autoplay={false}
-              showControls
-            />
-          </MainVideo>
+          </Certificate>
         )}
       </TopWrapper>
       <Container>
@@ -104,7 +77,7 @@ function Project(props) {
             )}
             {places && places.length > 0 && (
               <Categories>
-                <ListHeadline>Where?</ListHeadline>
+                <ListHeadline>Institution</ListHeadline>
                 <ul>
                   {places.map(place => (
                     <PlaceLogo key={place._id}>
@@ -116,7 +89,7 @@ function Project(props) {
             )}
             {skills && skills.length > 0 && (
               <Categories>
-                <ListHeadline>What?</ListHeadline>
+                <ListHeadline>Skills</ListHeadline>
                 <ul>
                   {skills.map(skill => (
                     <ListItem key={skill._id}>
@@ -129,7 +102,7 @@ function Project(props) {
             )}
             {softwares && softwares.length > 0 && (
               <Categories>
-                <ListHeadline>With?</ListHeadline>
+                <ListHeadline>Tools</ListHeadline>
                 <ul>
                   {softwares.map(software => (
                     <ListItem key={software._id}>
@@ -188,9 +161,13 @@ const MainContent = styled.div`
   }
 `;
 
-const MainImage = styled.div`
+const Certificate = styled.div`
   position: relative;
+  box-sizing: border-box;
   background: #eee;
+  border-width: 40px;
+  border-color: rgb(17, 34, 51);
+  border-style: solid;
 
   & img {
     position: relative;
@@ -199,32 +176,11 @@ const MainImage = styled.div`
     width: 100%;
     height: 100%;
     vertical-align: top;
-    object-fit: cover;
+    object-fit: contain;
   }
   @media (min-width: 960px) {
     width: 960px;
     margin: auto;
-  }
-`;
-
-const MainVideo = styled.div`
-  position: relative;
-  overflow: hidden;
-  // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
-  padding-top: 56.25%;
-  & iframe,
-  video {
-    border: 0;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-  @media (min-width: 960px) {
-    width: 960px;
-    margin: auto;
-    padding-top: 540px;
   }
 `;
 
@@ -300,4 +256,4 @@ const RelatedProjects = styled.div`
   }
 `;
 
-export default Project;
+export default Education;

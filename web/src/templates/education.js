@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import Project from "../components/project";
+import Education from "../components/education";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
@@ -95,7 +95,7 @@ const EducationTemplate = props => {
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      <Container>{education && <Project {...education} />}</Container>
+      <Container>{education && <Education {...education} />}</Container>
     </Layout>
   );
 };

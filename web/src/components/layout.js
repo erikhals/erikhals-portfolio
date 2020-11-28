@@ -70,7 +70,28 @@ export const BlueBG = styled.div`
 export const Background = styled(BackgroundImage)`
   position: fixed;
   min-height: 100vh;
-  z-index: -1;
+  z-index: -2;
+`;
+
+export const ArticleGrid = styled.div`
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 2em;
+
+  @media (min-width: 675px) {
+    grid-template-columns: 3fr 1fr;
+  }
+`;
+
+export const LinkBack = styled(Link)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
 `;
 
 export const NavButton = styled(Link)`
