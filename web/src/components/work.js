@@ -64,21 +64,7 @@ const Work = props => (
   </WorkPage>
 );
 
-const Background = styled(Img)`
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-`;
-
 const WorkPage = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
   padding: 8em 10em;
   display: flex;
   flex-direction: column;
@@ -89,6 +75,15 @@ const WorkPage = styled.div`
   @media (max-width: 450px) {
     padding: 1em;
   }
+`;
+
+const Background = styled(Img)`
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 `;
 
 const WorkGrid = styled.div`

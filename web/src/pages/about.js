@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import GraphQLErrorList from "../components/graphql-error-list";
 import About from "../components/about";
 import SEO from "../components/seo";
-import Layout from "../containers/layout";
+import LayoutContainer from "../containers/layout";
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from "../lib/helpers";
 
 export const query = graphql`
@@ -90,9 +90,8 @@ const AboutPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
-  console.log(data.background);
   return (
-    <Layout>
+    <LayoutContainer>
       <SEO title="Life" />
       <About
         education={educationNodes}
@@ -100,7 +99,7 @@ const AboutPage = props => {
         site={site}
         background={data.background}
       />
-    </Layout>
+    </LayoutContainer>
   );
 };
 

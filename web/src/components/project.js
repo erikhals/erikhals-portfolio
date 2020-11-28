@@ -1,6 +1,6 @@
 import { format, distanceInWords, differenceInDays } from "date-fns";
 import React from "react";
-import { Link } from "gatsby";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import Video from "sanity-mux-player";
 import { buildImageObj } from "../lib/helpers";
@@ -8,6 +8,7 @@ import { imageUrlFor } from "../lib/image-url";
 import BlockContent from "./block-content";
 import YoutubePreview from "./youtube";
 import Container from "./container";
+import { Background } from "./layout";
 import * as S from "./typography";
 
 function Project(props) {
@@ -29,8 +30,33 @@ function Project(props) {
     url: videoLink
   };
 
+  const ProjectBackground = () => {
+    const data = useStaticQuery(graphql`
+      query ProjectBGQuery {
+        background: file(relativePath: { eq: "Work_BG.jpg" }) {
+          id
+          childImageSharp {
+            fluid(jpegQuality: 90) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `);
+    return (
+      <Background
+        fluid={data.background.childImageSharp.fluid}
+        objectFit="cover"
+        objectPosition="50% 50%"
+        style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
+        alt=""
+      />
+    );
+  };
+
   return (
     <article>
+      <ProjectBackground />
       <TopWrapper>
         {!videoLink && !video && mainImage && mainImage.asset && (
           <MainImage>
