@@ -7,7 +7,6 @@ import Img from "gatsby-image";
 import { Background } from "./layout";
 
 const About = props => {
-  console.log(props);
   return (
     <AboutPage>
       <Background
@@ -20,7 +19,7 @@ const About = props => {
         <StickerGrid>
           {props.softwares &&
             props.softwares.map(node => (
-              <Sticker>
+              <Sticker key={node.title}>
                 <Img fluid={node.logo.asset.fluid} />
               </Sticker>
             ))}
@@ -29,7 +28,10 @@ const About = props => {
       <EducationGrid>
         {props.education &&
           props.education.map(node => (
-            <FramedPicture to={`/education/${node.slug.current}`} key={node.id}>
+            <FramedPicture
+              to={`/education/${node.slug.current}`}
+              key={node.title}
+            >
               <img
                 src={imageUrlFor(buildImageObj(node.mainImage))
                   .width(600)

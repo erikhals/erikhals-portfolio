@@ -93,8 +93,13 @@ function Education(props) {
                 <ul>
                   {skills.map(skill => (
                     <ListItem key={skill._id}>
-                      <img src={skill.logo.asset.fixed.src} alt={skill.title} />
-                      <span>{skill.title}</span>
+                      <Link to={"/work"} state={{ skill: skill.title }}>
+                        <img
+                          src={skill.logo.asset.fixed.src}
+                          alt={skill.title}
+                        />
+                        <span>{skill.title}</span>
+                      </Link>
                     </ListItem>
                   ))}
                 </ul>
@@ -149,7 +154,7 @@ const TopWrapper = styled.article`
 `;
 
 const MainContent = styled.div`
-  padding: 2em 4em 6em 4em;
+  margin-right: 4em;
   & a {
     color: var(--color-accent);
 
@@ -178,8 +183,8 @@ const Certificate = styled.div`
     vertical-align: top;
     object-fit: contain;
   }
-  @media (min-width: 960px) {
-    width: 960px;
+  @media (min-width: 1100px) {
+    width: 1100px;
     margin: auto;
   }
 `;

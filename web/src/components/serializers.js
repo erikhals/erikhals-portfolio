@@ -1,5 +1,5 @@
 import Figure from "./figure";
-import Youtube from "./youtube";
+import Youtube from "./youtubeblock";
 import Video from "./muxvideo";
 
 const serializers = {

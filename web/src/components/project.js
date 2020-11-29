@@ -120,8 +120,13 @@ function Project(props) {
                 <ul>
                   {skills.map(skill => (
                     <ListItem key={skill._id}>
-                      <img src={skill.logo.asset.fixed.src} alt={skill.title} />
-                      <span>{skill.title}</span>
+                      <Link to={"/work"} state={{ skill: skill.title }}>
+                        <img
+                          src={skill.logo.asset.fixed.src}
+                          alt={skill.title}
+                        />
+                        <span>{skill.title}</span>
+                      </Link>
                     </ListItem>
                   ))}
                 </ul>
@@ -171,12 +176,12 @@ function Project(props) {
   );
 }
 
-const TopWrapper = styled.article`
+const TopWrapper = styled.div`
   padding-top: 6rem;
 `;
 
 const MainContent = styled.div`
-  padding: 2em 4em 6em 4em;
+  margin-right: 4em;
   & a {
     color: var(--color-accent);
 
@@ -201,8 +206,8 @@ const MainImage = styled.div`
     vertical-align: top;
     object-fit: cover;
   }
-  @media (min-width: 960px) {
-    width: 960px;
+  @media (min-width: 1100px) {
+    width: 1100px;
     margin: auto;
   }
 `;
@@ -221,10 +226,10 @@ const MainVideo = styled.div`
     top: 0;
     width: 100%;
   }
-  @media (min-width: 960px) {
-    width: 960px;
+  @media (min-width: 1100px) {
+    width: 1100px;
     margin: auto;
-    padding-top: 540px;
+    padding-top: 618px;
   }
 `;
 

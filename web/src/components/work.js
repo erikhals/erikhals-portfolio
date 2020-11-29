@@ -52,6 +52,9 @@ const Work = props => (
             <span>{node.title}</span>
           </SkillButton>
         ))}
+        <SkillButton key="all" onClick={() => props.setSkill("")}>
+          Show all
+        </SkillButton>
       </SkillSelector>
     )}
     <Background
@@ -139,6 +142,9 @@ const SkillButton = styled.button`
     /* Fade in tooltip */
     opacity: 0;
     transition: opacity 0.3s;
+  }
+  :hover img {
+    filter: invert(0.3) sepia(1) saturate(3) hue-rotate(175deg);
   }
   :hover span {
     visibility: visible;

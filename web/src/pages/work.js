@@ -94,7 +94,9 @@ export const query = graphql`
 `;
 
 const WorkPage = props => {
-  const { data, errors } = props;
+  const { data, errors, location } = props;
+
+  //Error handling
   if (errors) {
     return (
       <Layout>
@@ -104,7 +106,7 @@ const WorkPage = props => {
   }
 
   // Set the category to sort projects by
-  const [skill, setSkill] = useState("");
+  const [skill, setSkill] = useState(location.state.skill || "");
 
   // Clean up the data
   const site = (data || {}).site;

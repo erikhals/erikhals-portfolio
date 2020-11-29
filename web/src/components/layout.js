@@ -74,14 +74,15 @@ export const Background = styled(BackgroundImage)`
 `;
 
 export const ArticleGrid = styled.div`
-  position: relative;
   background-color: rgba(255, 255, 255, 0.9);
   display: grid;
   grid-template-columns: 1fr;
   grid-column-gap: 2em;
+  padding: 0 10vw 6em 10vw;
 
-  @media (min-width: 675px) {
+  @media (min-width: 1100px) {
     grid-template-columns: 3fr 1fr;
+    padding: 1em 4em 6em 4em;
   }
 `;
 
