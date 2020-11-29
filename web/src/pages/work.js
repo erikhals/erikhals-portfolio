@@ -105,8 +105,10 @@ const WorkPage = props => {
     );
   }
 
-  // Set the category to sort projects by
-  const [skill, setSkill] = useState(location.state.skill || "");
+  // Sort projects by category
+  const [skill, setSkill] = useState(
+    (location.state && location.state.skill) || ""
+  );
 
   // Clean up the data
   const site = (data || {}).site;
