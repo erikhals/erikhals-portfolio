@@ -15,10 +15,14 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
       <Nav showNav={showNav}>
         <ul>
           <li>
-            <Link to="/work">Work</Link>
+            <Link to="/work" activeStyle={{ color: "white" }}>
+              Work
+            </Link>
           </li>
           <li>
-            <Link to="/about/">About</Link>
+            <Link to="/about/" activeStyle={{ color: "white" }}>
+              About
+            </Link>
           </li>
         </ul>
       </Nav>
