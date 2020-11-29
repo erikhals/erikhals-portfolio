@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
@@ -24,17 +24,19 @@ const Work = props => (
                     layout={"true"}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
+                    whileHover={{ scale: 1.05 }}
                     exit={{ opacity: 0 }}
-                    to={`/project/${node.slug.current}`}
                     key={node.id}
                   >
-                    <img
-                      src={imageUrlFor(buildImageObj(node.mainImage))
-                        .width(600)
-                        .height(360)
-                        .url()}
-                      alt={node.mainImage.alt}
-                    />
+                    <Link to={`/project/${node.slug.current}`}>
+                      <img
+                        src={imageUrlFor(buildImageObj(node.mainImage))
+                          .width(600)
+                          .height(360)
+                          .url()}
+                        alt={node.mainImage.alt}
+                      />
+                    </Link>
                   </Picture>
                 );
               })}
@@ -47,6 +49,7 @@ const Work = props => (
           <SkillButton
             key={node.title}
             onClick={() => props.setSkill(node.title)}
+            active={props.skill === node.title}
           >
             <img src={node.logo.asset.fluid.src} />
             <span>{node.title}</span>
@@ -143,9 +146,7 @@ const SkillButton = styled.button`
     opacity: 0;
     transition: opacity 0.3s;
   }
-  :hover img {
-    filter: invert(0.3) sepia(1) saturate(3) hue-rotate(175deg);
-  }
+ 
   :hover span {
     visibility: visible;
     opacity: 1;
@@ -155,13 +156,21 @@ const SkillButton = styled.button`
     outline: 0;
     border-color: black;
   }
+
   & img {
     width: 40px;
     height: 40px;
+    ${props =>
+      props.active &&
+      css`
+        filter: invert(0.3) sepia(1) saturate(3) hue-rotate(175deg);
+      `}
+  :hover img {
+    filter: invert(0.3) sepia(1) saturate(3) hue-rotate(175deg);
   }
 `;
 
-const Picture = styled(motion.custom(Link))`
+const Picture = styled(motion.div)`
   width: 100%;
   height: 100%;
   &:nth-child(1) {
