@@ -7,6 +7,15 @@ import { imageUrlFor } from "../lib/image-url";
 import BlockContent from "./block-content";
 import Container from "./container";
 import { Background, ArticleGrid, LinkBack } from "./layout";
+import {
+  TopWrapper,
+  PlaceLogo,
+  ListItem,
+  ListHeadline,
+  Categories,
+  PublishedAt,
+  RelatedProjects
+} from "./template-elements";
 import * as S from "./typography";
 
 function Education(props) {
@@ -149,10 +158,6 @@ function Education(props) {
   );
 }
 
-const TopWrapper = styled.article`
-  padding-top: 6rem;
-`;
-
 const MainContent = styled.div`
   margin-right: 4em;
   & a {
@@ -186,78 +191,6 @@ const Certificate = styled.div`
   @media (min-width: 1100px) {
     width: 1100px;
     margin: auto;
-  }
-`;
-
-const PlaceLogo = styled.li`
-  & img {
-    width: 200px;
-    height: 100%;
-    object-fit: contain;
-  }
-`;
-
-const Categories = styled.div`
-  border-top: 1px solid var(--color-very-light-gray);
-  margin: 2rem 0 3rem;
-
-  & ul {
-    list-style: none;
-    margin: 0.75rem 0;
-    padding: 0;
-  }
-
-  & ul li {
-    padding: 0.25rem 0;
-  }
-`;
-
-const ListHeadline = styled(S.Base)`
-  margin: 0.5rem 0 0;
-`;
-
-const PublishedAt = styled(S.Small)`
-  margin: 1.5rem 0 3rem;
-  color: var(--color-gray);
-`;
-
-const ListItem = styled.li`
-  position: relative;
-  margin: 0.5em 0;
-  display: flex;
-  align-items: center;
-  & a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-  }
-  & img {
-    width: 2em;
-    height: 2em;
-    padding: 0;
-    margin-right: 1em;
-  }
-  :hover a {
-    text-decoration: underline;
-  }
-`;
-
-const RelatedProjects = styled.div`
-  border-top: 1px solid var(--color-very-light-gray);
-  margin: 2rem 0 3rem;
-
-  & ul {
-    list-style: none;
-    margin: 0.75rem 0;
-    padding: 0;
-  }
-
-  & a {
-    display: inline-block;
-    color: inherit;
-    text-decoration: none;
-    padding: 0.25rem 0;
   }
 `;
 

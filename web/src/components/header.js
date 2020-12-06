@@ -16,13 +16,18 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
         <ul>
           <li>
             <Link to="/work" activeStyle={{ color: "white" }}>
-              Work
+              WORK
             </Link>
           </li>
           <li>
             <Link to="/about/" activeStyle={{ color: "white" }}>
-              About
+              ABOUT
             </Link>
+          </li>
+          <li>
+            <a href="http://linkedin.com/in/erikhals" target="blank">
+              <Icon symbol="linkedin" />
+            </a>
           </li>
         </ul>
       </Nav>
@@ -48,6 +53,7 @@ const HeaderWrapper = styled.div`
 
 const Branding = styled.div`
   font-weight: 600;
+  font-size: 1.2rem;
   flex: 1;
 
   & a {
@@ -95,12 +101,17 @@ const Nav = styled.nav`
           display: none;
         `}
   & ul {
+    display: flex;
+    justify-items: center;
+    align-items: center;
     margin: 0;
     padding: 0;
+    list-style-type: none;
   }
 
   & ul li a {
     display: block;
+    margin-left: 1em;
     color: var(--color-black);
     text-decoration: none;
   }

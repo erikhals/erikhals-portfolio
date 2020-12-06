@@ -29,18 +29,29 @@ const Greeting = styled.div`
   top: 0;
   text-align: left;
   margin: auto;
-  margin-left: 25vw;
-  padding: 20vh 0;
+  padding: 20vh 25vw;
+  font-family: "Recursive";
+
   & h1 {
-    color: #141e30;
-    line-height: 6rem;
-    font-size: 6rem;
-    font-weight: 1000;
+    color: var(--color-accent);
+    filter: drop-shadow(0 0 0.5rem rgb(255, 255, 255, 0.5));
+    font-weight: 500;
+    font-variation-settings: "CRSV" 1, "MONO" 1;
     margin-top: 0;
     margin-bottom: 0;
+    font-size: 32px;
+    @media screen and (min-width: 320px) {
+      font-size: calc(32px + 32 * ((100vw - 320px) / 680));
+    }
+    @media screen and (min-width: 1000px) {
+      font-size: 64px;
+    }
   }
   & p {
-    width: 40ch;
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    max-width: 50ch;
+    font-weight: 400;
   }
 `;
 

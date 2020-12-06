@@ -1,12 +1,12 @@
-import {Link} from 'gatsby'
-import React from 'react'
-import styled from 'styled-components'
-import {Tooltip} from './layout'
-import BlockText from './block-text'
-import {buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
+import { Link } from "gatsby";
+import React from "react";
+import styled from "styled-components";
+import { Tooltip } from "../layout";
+import BlockText from "../block-text";
+import { buildImageObj } from "../../lib/helpers";
+import { imageUrlFor } from "../../lib/image-url";
 
-function ProjectPreview (props) {
+function ProjectPreview(props) {
   return (
     <StyledProjectPreview left={props.left}>
       <LeadMediaThumb to={`/project/${props.slug.current}`} left={props.left}>
@@ -46,7 +46,7 @@ function ProjectPreview (props) {
       <SoftwareBlock>
         {props.softwares &&
           props.softwares.map(software => (
-            <a href={software.link} target='_blank' key={software.title}>
+            <a href={software.link} target="_blank" key={software.title}>
               <img
                 key={software.title}
                 src={software.logo.asset.fluid.src}
@@ -56,7 +56,7 @@ function ProjectPreview (props) {
           ))}
       </SoftwareBlock>
     </StyledProjectPreview>
-  )
+  );
 }
 
 const StyledProjectPreview = styled.div`
@@ -65,10 +65,10 @@ const StyledProjectPreview = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-areas: ${props => {
     const leftGrid =
-      "'software topRight'" + "'image skills'" + "'title lowRight'"
+      "'software topRight'" + "'image skills'" + "'title lowRight'";
     const rightGrid =
-      "'topLeft software'" + "'skills image'" + "'lowLeft title'"
-    return props.left ? leftGrid : rightGrid
+      "'topLeft software'" + "'skills image'" + "'lowLeft title'";
+    return props.left ? leftGrid : rightGrid;
   }};
   grid-gap: 1em;
   color: inherit;
@@ -76,7 +76,7 @@ const StyledProjectPreview = styled.div`
   @media (max-width: 450px) {
     grid-template-columns: auto auto;
   }
-`
+`;
 
 const LeadMediaThumb = styled(Link)`
   position: relative;
@@ -95,7 +95,7 @@ const LeadMediaThumb = styled(Link)`
     border-radius: 5px;
     object-fit: cover;
   }
-`
+`;
 const TitleBlock = styled(Link)`
   grid-area: title;
   color: inherit;
@@ -104,10 +104,10 @@ const TitleBlock = styled(Link)`
   :hover h3 {
     text-decoration: underline;
   }
-`
+`;
 const SkillBlock = styled.ul`
   grid-area: skills;
-  text-align: ${props => (props.left ? 'left' : 'right')};
+  text-align: ${props => (props.left ? "left" : "right")};
   list-style: none;
   padding-left: 0;
   & img {
@@ -116,7 +116,7 @@ const SkillBlock = styled.ul`
     width: 3em;
     height: 3em;
   }
-`
+`;
 
 const SoftwareBlock = styled.div`
   grid-area: software;
@@ -126,5 +126,5 @@ const SoftwareBlock = styled.div`
     width: 2em;
     height: 2em;
   }
-`
-export default ProjectPreview
+`;
+export default ProjectPreview;

@@ -89,19 +89,25 @@ const Sticker = styled.div`
 const EducationGrid = styled.div`
   position: absolute;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   top: 10%;
   left: 10%;
 `;
 const FramedPicture = styled(Link)`
   margin-right: 2vw;
-  filter: drop-shadow(1px 1px 1px #111);
+  filter: drop-shadow(1px 1px 2px #111);
   & img {
     max-width: 200px;
     max-height: 200px;
     box-sizing: border-box;
-    border: 1em solid #123;
+    border: 12px solid #123;
     object-fit: contain;
+    @media (max-width: 650px) {
+      max-width: 150px;
+      max-height: 150px;
+      border: 8px solid #123;
+    }
   }
 `;
 

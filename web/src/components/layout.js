@@ -27,26 +27,7 @@ const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
 const Content = styled.div`
   min-height: 100%;
 `;
-const Footer = styled.footer`
-  box-sizing: border-box;
-  max-width: 960px;
-  padding: 4.5em 1.5em 1.5em;
-  margin: 0 auto;
 
-  @media (min-width: 450px) {
-    padding: 6em 2em 2em;
-  }
-  & a {
-    color: inherit;
-    text-decoration: none;
-
-    @media (hover: hover) {
-      &:hover {
-        color: var(--color-accent);
-      }
-    }
-  }
-`;
 export const BlueBG = styled.div`
   position: fixed;
   top: 0;
