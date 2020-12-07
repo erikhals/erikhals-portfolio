@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
@@ -28,16 +29,15 @@ const About = props => {
       <EducationGrid>
         {props.education &&
           props.education.map(node => (
-            <FramedPicture
-              to={`/education/${node.slug.current}`}
-              key={node.title}
-            >
-              <img
-                src={imageUrlFor(buildImageObj(node.mainImage))
-                  .width(600)
-                  .url()}
-                alt={node.mainImage.alt}
-              />
+            <FramedPicture key={node.title} whileHover={{ scale: 1.05 }}>
+              <Link to={`/education/${node.slug.current}`}>
+                <img
+                  src={imageUrlFor(buildImageObj(node.mainImage))
+                    .width(600)
+                    .url()}
+                  alt={node.mainImage.alt}
+                />
+              </Link>
             </FramedPicture>
           ))}
       </EducationGrid>
@@ -94,7 +94,7 @@ const EducationGrid = styled.div`
   top: 10%;
   left: 10%;
 `;
-const FramedPicture = styled(Link)`
+const FramedPicture = styled(motion.div)`
   margin-right: 2vw;
   filter: drop-shadow(1px 1px 2px #111);
   & img {

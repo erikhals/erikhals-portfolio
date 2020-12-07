@@ -37,6 +37,9 @@ module.exports = {
       options: {
         google: {
           families: ["Spartan"]
+        },
+        custom: {
+          families: ["Recursive"]
         }
       }
     }
