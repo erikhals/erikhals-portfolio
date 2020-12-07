@@ -2,13 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import recursive_VF from "./Recursive_VF_1.065.woff2";
 
 const GlobalStyle = createGlobalStyle`
-@font-face {
-        font-family: 'Recursive';
-        src: local('Recursive'),
-        url(${recursive_VF}) format('woff2');
-        font-weight: 300 800;
-        font-style: normal;
-    }
 
 * {
   --font-family-sans: 'Recursive', BlinkMacSystemFont, sans-serif;

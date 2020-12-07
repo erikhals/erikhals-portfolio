@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "Recursive";
+  src: local("Recursive"), url(./Recursive_VF_1.065.woff2) format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+}
