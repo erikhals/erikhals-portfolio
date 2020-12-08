@@ -110,6 +110,8 @@ const WorkPage = props => {
     (location.state && location.state.skill) || ""
   );
 
+  const [hidedrawer, setHidedrawer] = useState(false);
+
   // Clean up the data
   const site = (data || {}).site;
   const projectNodes = (data || {}).projects
@@ -148,6 +150,8 @@ const WorkPage = props => {
           skill={skill}
           skills={skills}
           setSkill={setSkill}
+          hidedrawer={hidedrawer}
+          setHidedrawer={setHidedrawer}
         />
       )}
     </Layout>

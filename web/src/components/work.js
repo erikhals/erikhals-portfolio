@@ -44,21 +44,26 @@ const Work = props => (
       </AnimateSharedLayout>
     </WorkGrid>
     {props.skills && (
-      <SkillSelector>
-        {props.skills.map(node => (
-          <SkillButton
-            key={node.title}
-            onClick={() => props.setSkill(node.title)}
-            active={props.skill === node.title}
-          >
-            <img src={node.logo.asset.fluid.src} />
-            <span>{node.title}</span>
+      <SkillSelectorWrapper>
+        <SkillSelector hide={props.hidedrawer}>
+          <SkillSelectorToggle
+            onClick={() => props.setHidedrawer(!props.hidedrawer)}
+          />
+          {props.skills.map(node => (
+            <SkillButton
+              key={node.title}
+              onClick={() => props.setSkill(node.title)}
+              active={props.skill === node.title}
+            >
+              <img src={node.logo.asset.fluid.src} />
+              <span>{node.title}</span>
+            </SkillButton>
+          ))}
+          <SkillButton key="all" onClick={() => props.setSkill("")}>
+            Show all
           </SkillButton>
-        ))}
-        <SkillButton key="all" onClick={() => props.setSkill("")}>
-          Show all
-        </SkillButton>
-      </SkillSelector>
+        </SkillSelector>
+      </SkillSelectorWrapper>
     )}
     <Background
       fluid={props.background.childImageSharp.fluid}
@@ -104,20 +109,40 @@ const WorkGrid = styled.div`
     list-style: none;
   }
   @media (max-width: 650px) {
+    margin-top: 60px;
+    margin-bottom: 30vh;
     grid-template-columns: minmax(100%, 1fr);
+    grid-template-rows: auto;
   }
 `;
 
-const SkillSelector = styled.div`
+const SkillSelectorWrapper = styled.div`
   position: fixed;
-  background: #dddddd;
-
-  right: 0;
   left: 0;
+  right: 0;
   bottom: 0;
   display: flex;
   justify-content: center;
+`;
+
+const SkillSelectorToggle = styled.div`
+  width: 2em;
+  height: 2em;
+`;
+
+const SkillSelector = styled.div`
+  background: #dddddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: auto;
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  ${props =>
+    props.hide &&
+    css`
+      transform: translateY(90%);
+    `}
 `;
 const SkillButton = styled.button`
   margin: 5px;
