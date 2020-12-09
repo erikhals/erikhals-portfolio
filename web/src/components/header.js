@@ -43,6 +43,12 @@ const HeaderRoot = styled.div`
 
 const HeaderWrapper = styled.div`
   box-sizing: border-box;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 244, 0, 0) 100%
+  );
   margin: 0 auto;
   padding: 1em;
   display: flex;
