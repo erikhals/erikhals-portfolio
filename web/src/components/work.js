@@ -46,9 +46,9 @@ const Work = props => (
     {props.skills && (
       <SkillSelectorWrapper>
         <SkillSelector hide={props.hidedrawer}>
-          <SkillSelectorToggle
+          {/* <SkillSelectorToggle
             onClick={() => props.setHidedrawer(!props.hidedrawer)}
-          />
+          /> */}
           {props.skills.map(node => (
             <SkillButton
               key={node.title}
@@ -138,6 +138,7 @@ const SkillSelector = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 0 1em;
   ${props =>
     props.hide &&
     css`

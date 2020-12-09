@@ -14,16 +14,22 @@ const Home = props => (
       <h1>Digital Designer</h1>
       <p>{props.bio}</p>
       <Button onClick={() => props.setShowreelopen(!props.showreelopen)}>
-        Play Showreel
+        <span /> Showreel
       </Button>
     </Greeting>
     {props.showreelopen && (
-      <Showreel
-        assetDocument={props.showreel}
-        autoload
-        autoplay={true}
-        showControls
-      />
+      <ShowreelWrapper
+        onClick={() => props.setShowreelopen(!props.showreelopen)}
+      >
+        <Showreel>
+          <Video
+            assetDocument={props.showreel}
+            autoload
+            autoplay={true}
+            showControls
+          />
+        </Showreel>
+      </ShowreelWrapper>
     )}
   </HomePage>
 );
@@ -43,6 +49,9 @@ const Greeting = styled.div`
   margin: auto;
   padding: 20vh 25vw;
   font-family: "Recursive";
+  @media screen and (max-width: 960px) {
+    padding: 10vh 15vw;
+  }
 
   & h1 {
     color: var(--color-accent);
@@ -67,16 +76,54 @@ const Greeting = styled.div`
   }
 `;
 
-const Showreel = styled(Video)`
+const ShowreelWrapper = styled.div`
   position: fixed;
+  display: flex;
+  justify-content: center;
+  background: #00000099;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1em;
+`;
+
+const Showreel = styled.div`
+  width: 100%;
+  max-width: 170vh;
+  height: 0;
+  padding-bottom: 56%;
+  margin: auto;
 `;
 
 const Button = styled.button`
-  background: none;
-  padding: 1em;
-  border: 2px solid #4caf50;
+  cursor: pointer;
+  position: relative;
+  margin-top: 2em;
+  color: var(--color-accent);
+  font-family: var(--font-family-sans);
+  background: #ffffff10;
+  padding: 1em 2em 1em 4em;
+  border: none;
+  border-radius: 20px;
+  box-shadow: -1px 4px 1em #00000040, 1px -4px 1em #ffffff99;
+  & span {
+    width: 0;
+    height: 0;
+    border-top: 7.5px solid transparent;
+    border-left: 10px solid #fff;
+    border-bottom: 7.5px solid transparent;
+    position: absolute;
+    top: 33%;
+    left: 2em;
+  }
+  &:hover {
+    background: #ffffff20;
+    box-shadow: -2px 6px 1.5em #00000040, 2px -6px 1.5em #ffffff99;
+  }
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default Home;
