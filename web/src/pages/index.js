@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -23,6 +23,17 @@ export const query = graphql`
     sanitySiteSettings {
       author {
         _rawBio
+        showreel {
+          asset {
+            _key
+            _type
+            assetId
+            filename
+            playbackId
+            status
+            thumbTime
+          }
+        }
       }
     }
   }
@@ -42,11 +53,14 @@ const IndexPage = props => {
   const site = (data || {}).site;
   const bio = (data || {}).sanitySiteSettings.author._rawBio[0].children[0]
     .text;
+  const showreel = (data || {}).sanitySiteSettings.author.showreel.asset;
 
   //Error if site settings not found
   if (!site) {
     throw new Error("Having some difficulty reaching the content server");
   }
+
+  const [showreelopen, setShowreelopen] = useState(false);
 
   //Loading the view component
   return (
@@ -57,7 +71,13 @@ const IndexPage = props => {
         keywords={site.keywords}
       />
       <h1 hidden>Welcome to {site.title}</h1>
-      <Home bio={bio} background={data.background} />
+      <Home
+        bio={bio}
+        background={data.background}
+        showreel={showreel}
+        showreelopen={showreelopen}
+        setShowreelopen={setShowreelopen}
+      />
     </Layout>
   );
 };

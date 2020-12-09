@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Background } from "./layout";
+import Video from "sanity-mux-player";
 
 const Home = props => (
   <HomePage>
@@ -12,7 +13,18 @@ const Home = props => (
     <Greeting>
       <h1>Digital Designer</h1>
       <p>{props.bio}</p>
+      <Button onClick={() => props.setShowreelopen(!props.showreelopen)}>
+        Play Showreel
+      </Button>
     </Greeting>
+    {props.showreelopen && (
+      <Showreel
+        assetDocument={props.showreel}
+        autoload
+        autoplay={true}
+        showControls
+      />
+    )}
   </HomePage>
 );
 
@@ -53,6 +65,18 @@ const Greeting = styled.div`
     max-width: 50ch;
     font-weight: 400;
   }
+`;
+
+const Showreel = styled(Video)`
+  position: fixed;
+  top: 0;
+  left: 0;
+`;
+
+const Button = styled.button`
+  background: none;
+  padding: 1em;
+  border: 2px solid #4caf50;
 `;
 
 export default Home;
