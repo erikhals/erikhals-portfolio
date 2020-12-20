@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 import Img from "gatsby-image";
 import { Background } from "./layout";
+
+const variants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
 
 const About = props => {
   return (
@@ -20,7 +25,11 @@ const About = props => {
         <StickerGrid>
           {props.softwares &&
             props.softwares.map(node => (
-              <Sticker key={node.title}>
+              <Sticker
+                key={node.title}
+                onMouseEnter={() => props.setSoftwareInfo(node.title)}
+                onMouseLeave={() => props.setSoftwareInfo("hidden")}
+              >
                 <Img fluid={node.logo.asset.fluid} />
               </Sticker>
             ))}
@@ -41,6 +50,20 @@ const About = props => {
             </FramedPicture>
           ))}
       </EducationGrid>
+      <AnimatePresence>
+        {props.softwareInfo != "hidden" && (
+          <SoftwareInfoBox
+            layout
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={variants}
+          >
+            <h2>{props.softwareInfo}</h2>
+            {props.softwareDescription}
+          </SoftwareInfoBox>
+        )}
+      </AnimatePresence>
     </AboutPage>
   );
 };
@@ -82,6 +105,7 @@ const Sticker = styled.div`
   object-fit: contain;
   width: 70%;
   max-height: 100%;
+  cursor: pointer;
   & :hover {
     transform: scale(1.1);
   }
@@ -108,6 +132,20 @@ const FramedPicture = styled(motion.div)`
       max-height: 150px;
       border: 8px solid #123;
     }
+  }
+`;
+
+const SoftwareInfoBox = styled(motion.div)`
+  position: absolute;
+  width: 40ch;
+  bottom: 45%;
+  left: 50%;
+  margin-left: -20ch;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 16px;
+  border-radius: 10px;
+  & h2 {
+    margin: 0;
   }
 `;
 

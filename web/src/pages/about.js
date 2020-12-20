@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import GraphQLErrorList from "../components/graphql-error-list";
 import About from "../components/about";
@@ -58,6 +58,7 @@ export const query = graphql`
       edges {
         node {
           title
+          description
           logo {
             asset {
               fluid(maxWidth: 30) {
@@ -90,6 +91,15 @@ const AboutPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
+  const [softwareInfo, setSoftwareInfo] = useState("hidden");
+  let softwareDescription = "";
+
+  if (softwareInfo != "hidden") {
+    softwareDescription = softwareNodes.find(
+      node => node.title === softwareInfo
+    ).description;
+  }
+
   return (
     <LayoutContainer>
       <SEO title="Life" />
@@ -98,6 +108,9 @@ const AboutPage = props => {
         softwares={softwareNodes}
         site={site}
         background={data.background}
+        softwareInfo={softwareInfo}
+        setSoftwareInfo={setSoftwareInfo}
+        softwareDescription={softwareDescription}
       />
     </LayoutContainer>
   );
