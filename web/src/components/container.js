@@ -9,9 +9,8 @@ const StyledContainer = styled.div`
   position: relative;
   box-sizing: border-box;
   max-width: 1100px;
-  margin: 0 auto 60px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  margin: 0 auto;
+  padding-bottom: 60px;
   overflow: hidden;
 `;
 

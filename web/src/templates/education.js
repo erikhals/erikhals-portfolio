@@ -90,12 +90,8 @@ const EducationTemplate = props => {
       {errors && <SEO title="GraphQL Error" />}
       {education && <SEO title={education.title || "Untitled"} />}
 
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-      <Container>{education && <Education {...education} />}</Container>
+      {errors && <GraphQLErrorList errors={errors} />}
+      {education && <Education {...education} />}
     </Layout>
   );
 };

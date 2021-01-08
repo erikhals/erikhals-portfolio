@@ -160,6 +160,7 @@ function Education(props) {
 
 const MainContent = styled.div`
   margin-right: 4em;
+
   & a {
     color: var(--color-accent);
 

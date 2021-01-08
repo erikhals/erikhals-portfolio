@@ -60,6 +60,8 @@ export const ArticleGrid = styled.div`
   grid-template-columns: 1fr;
   grid-column-gap: 2em;
   padding: 0 10vw 6em 10vw;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
   @media (min-width: 1100px) {
     grid-template-columns: 3fr 1fr;
