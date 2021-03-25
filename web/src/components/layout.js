@@ -98,6 +98,35 @@ export const NavButton = styled(Link)`
   }
 `;
 
+export const RightArrow = styled(Link)`
+  position: absolute;
+  top: 45%;
+  right: 3rem;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  background-image: url("chevron-right.svg");
+  background-size: 2rem;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+`;
+
+export const LeftArrow = styled(Link)`
+  position: absolute;
+  top: 45%;
+  left: 3rem;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  background-image: url("chevron-right.svg");
+  background-size: 2rem;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+`;
+
 export const Tooltip = styled.div`
   /* Tooltip container */
   position: relative;

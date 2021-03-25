@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   --color-white: #fff;
   --color-accent: #285684;
   --color-primary: #26634F;
-  --color-secondary: #DE2494;
+  --color-secondary: #80EDE8;
 
   /* Typography */
   --unit: 16;

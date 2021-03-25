@@ -13,7 +13,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
         <ul>
           <li>
             <Link to="/" activeStyle={{ color: "#285684" }}>
-              SHOWREEL
+              REEL
             </Link>
           </li>
           <li>

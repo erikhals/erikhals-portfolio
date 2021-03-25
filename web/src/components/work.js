@@ -5,9 +5,12 @@ import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 import Img from "gatsby-image";
+import { RightArrow, LeftArrow } from "./layout";
 
 const Work = props => (
   <WorkPage>
+    <RightArrow to="/about" />
+    <LeftArrow to="/" />
     <WorkGrid>
       <AnimateSharedLayout>
         <AnimatePresence>

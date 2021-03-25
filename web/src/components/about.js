@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 import Img from "gatsby-image";
-import { Background } from "./layout";
+import { Background, LeftArrow } from "./layout";
 
 const variants = {
   hidden: { y: 50, opacity: 0 },
@@ -21,6 +21,7 @@ const About = props => {
         objectPosition="50% 50%"
         alt=""
       />
+
       <StickerWrapper>
         <StickerGrid>
           {props.softwares &&
@@ -35,6 +36,7 @@ const About = props => {
             ))}
         </StickerGrid>
       </StickerWrapper>
+      <LeftArrow to="/work" />
       <EducationGrid>
         {props.education &&
           props.education.map(node => (

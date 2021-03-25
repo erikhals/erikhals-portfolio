@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Background } from "./layout";
+import motion from "framer-motion";
+import { Background, RightArrow } from "./layout";
 import Video from "sanity-mux-player";
 
 const Home = props => (
@@ -10,6 +11,7 @@ const Home = props => (
       style={{ backgroundPosition: "80% 50%" }}
       alt=""
     />
+    <RightArrow to="/work" />
     <Greeting>
       <h1>Erik Hals</h1>
       <h2>Digital Designer</h2>
@@ -56,17 +58,17 @@ const Greeting = styled.div`
 
   & h1 {
     font-family: "Mrs Saint Delafield";
-    color: var(--color-secondary);
+    color: var(--color-accent);
     filter: drop-shadow(0.1rem 0.1rem 0.1rem rgb(0, 0, 0, 0.5));
     font-weight: 500;
     margin-top: 0;
     margin-bottom: -0.5em;
     font-size: 64px;
     @media screen and (min-width: 320px) {
-      font-size: calc(64px + 32 * ((100vw - 320px) / 680));
+      font-size: calc(64px + 64 * ((100vw - 320px) / 680));
     }
-    @media screen and (min-width: 1000px) {
-      font-size: 120px;
+    @media screen and (min-width: 1440px) {
+      font-size: 240px;
     }
   }
   & h2 {
