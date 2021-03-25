@@ -80,6 +80,7 @@ const WorkPage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   @media (max-width: 650px) {
     padding: 6em;
   }
@@ -100,6 +101,7 @@ const Background = styled(Img)`
 const WorkGrid = styled.div`
   display: grid;
   width: 100%;
+  max-width: 1440px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-template-rows: repeat(auto-fill, 120px);
   grid-auto-flow: dense;
