@@ -12,6 +12,8 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "@fontsource/mrs-saint-delafield": "^4.2.2",
+    "@fontsource/recursive": "^4.2.2",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/image-url": "^0.140.19",
     "@types/youtube": "0.0.38",

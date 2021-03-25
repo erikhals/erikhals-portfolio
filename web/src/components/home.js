@@ -11,7 +11,8 @@ const Home = props => (
       alt=""
     />
     <Greeting>
-      <h1>Digital Designer</h1>
+      <h1>Erik Hals</h1>
+      <h2>Digital Designer</h2>
       <p>{props.bio}</p>
       <Button onClick={() => props.setShowreelopen(!props.showreelopen)}>
         <span /> Showreel
@@ -54,19 +55,24 @@ const Greeting = styled.div`
   }
 
   & h1 {
-    color: var(--color-white);
-    filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0, 0.5));
+    font-family: "Mrs Saint Delafield";
+    color: var(--color-secondary);
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem rgb(0, 0, 0, 0.5));
     font-weight: 500;
-    font-variation-settings: "CRSV" 1, "MONO" 1;
     margin-top: 0;
-    margin-bottom: 0;
-    font-size: 32px;
+    margin-bottom: -0.5em;
+    font-size: 64px;
     @media screen and (min-width: 320px) {
-      font-size: calc(32px + 32 * ((100vw - 320px) / 680));
+      font-size: calc(64px + 32 * ((100vw - 320px) / 680));
     }
     @media screen and (min-width: 1000px) {
-      font-size: 64px;
+      font-size: 120px;
     }
+  }
+  & h2 {
+    color: var(--color-accent);
+    margin-top: 1em;
+    font-variation-settings: "CRSV" 1, "MONO" 1;
   }
   & p {
     color: var(--color-accent);
@@ -100,25 +106,24 @@ const Button = styled.button`
   cursor: pointer;
   position: relative;
   margin-top: 2em;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-family: var(--font-family-sans);
-  background: #ffffff10;
+  background: #ffffff30;
   padding: 1em 2em 1em 4em;
-  border: none;
+  border: 2px solid var(--color-primary);
   border-radius: 20px;
   box-shadow: -1px 4px 1em #00000040, 1px -4px 1em #ffffff99;
   & span {
     width: 0;
     height: 0;
     border-top: 7.5px solid transparent;
-    border-left: 10px solid #fff;
+    border-left: 10px solid var(--color-primary);
     border-bottom: 7.5px solid transparent;
     position: absolute;
     top: 33%;
     left: 2em;
   }
   &:hover {
-    background: #ffffff20;
     box-shadow: -2px 6px 1.5em #00000040, 2px -6px 1.5em #ffffff99;
   }
   &:focus {

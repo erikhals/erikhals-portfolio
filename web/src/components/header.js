@@ -6,14 +6,16 @@ import Icon from "./icon";
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
   <HeaderRoot>
     <HeaderWrapper>
-      <Branding>
-        <Link to="/">Erik Hals</Link>
-      </Branding>
       <ToggleNavButton onClick={() => (showNav ? onHideNav() : onShowNav())}>
         <Icon symbol="hamburger" />
       </ToggleNavButton>
       <Nav showNav={showNav}>
         <ul>
+          <li>
+            <Link to="/" activeStyle={{ color: "#285684" }}>
+              SHOWREEL
+            </Link>
+          </li>
           <li>
             <Link to="/work" activeStyle={{ color: "#285684" }}>
               WORK
@@ -52,6 +54,7 @@ const HeaderWrapper = styled.div`
   margin: 0 auto;
   padding: 1em;
   display: flex;
+  justify-content: flex-end;
   @media (min-width: 450px) {
     padding: 1.5em 1.5em;
   }

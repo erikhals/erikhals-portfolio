@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
 
 * {
   --font-family-sans: 'Recursive', BlinkMacSystemFont, sans-serif;
+  --font-family-hand: 'Mrs Saint Delafield';
 
   --color-black: #202123;
   --color-dark-gray: #32373e;
@@ -13,6 +14,8 @@ const GlobalStyle = createGlobalStyle`
   --color-very-light-gray: #e7ebed;
   --color-white: #fff;
   --color-accent: #285684;
+  --color-primary: #26634F;
+  --color-secondary: #DE2494;
 
   /* Typography */
   --unit: 16;

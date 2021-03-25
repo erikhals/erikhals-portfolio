@@ -36,7 +36,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Spartan"]
+          families: ["Spartan", "Mrs Saint Delafield"]
         },
         custom: {
           families: ["Recursive"]
