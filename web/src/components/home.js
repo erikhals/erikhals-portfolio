@@ -54,8 +54,8 @@ const Greeting = styled.div`
   }
 
   & h1 {
-    color: var(--color-accent);
-    filter: drop-shadow(0 0 0.5rem rgb(255, 255, 255, 0.5));
+    color: var(--color-white);
+    filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0, 0.5));
     font-weight: 500;
     font-variation-settings: "CRSV" 1, "MONO" 1;
     margin-top: 0;
