@@ -33,6 +33,16 @@ module.exports = {
       }
     },
     {
+      resolve: "gatsby-plugin-prefetch-google-fonts",
+      options: {
+        fonts: [
+          { family: "Spartan" },
+          { family: "Mrs Saint Delafield" },
+          { family: "Recursive" }
+        ]
+      }
+    }
+    /* {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
@@ -42,6 +52,6 @@ module.exports = {
           families: ["Recursive"]
         }
       }
-    }
+    } */
   ]
 };
