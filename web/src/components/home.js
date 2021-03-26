@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { Background, RightArrow } from "./layout";
 import Video from "sanity-mux-player";
 
@@ -17,12 +16,7 @@ const Home = props => {
         alt=""
       />
 
-      <Greeting
-        initial="hidden"
-        animate="visible"
-        variants={variants}
-        transition={{ duration: 1.3, delay: 0.1 }}
-      >
+      <Greeting>
         <h1>Erik Hals</h1>
         <h2>Digital Designer</h2>
         <p>{props.bio}</p>
@@ -57,7 +51,7 @@ const HomePage = styled.div`
   left: 0;
 `;
 
-const Greeting = styled(motion.div)`
+const Greeting = styled.div`
   position: absolute;
   top: 0;
   text-align: left;

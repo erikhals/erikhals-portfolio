@@ -22,11 +22,7 @@ const About = props => {
         alt=""
       />
 
-      <StickerWrapper
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.1 }}
-      >
+      <StickerWrapper>
         <StickerGrid>
           {props.softwares &&
             props.softwares.map(node => (
@@ -86,7 +82,7 @@ const AboutPage = styled.div`
   overflow: hidden;
 `;
 
-const StickerWrapper = styled(motion.div)`
+const StickerWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -120,7 +116,7 @@ const Sticker = styled.div`
     transform: scale(1.1);
   }
 `;
-const EducationGrid = styled(motion.div)`
+const EducationGrid = styled.div`
   position: absolute;
   display: flex;
   flex-wrap: wrap;

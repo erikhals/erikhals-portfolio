@@ -42,10 +42,10 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Spartan", "Mrs Saint Delafield"]
+          families: ["Spartan"]
         },
         custom: {
-          families: ["Recursive"]
+          families: ["Recursive", "Mrs Saint Delafield"]
         }
       }
     }
