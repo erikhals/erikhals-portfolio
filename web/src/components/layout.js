@@ -110,6 +110,9 @@ export const RightArrow = styled(Link)`
   background-size: 2rem;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  @media (max-width: 650px) {
+    display: none;
+  }
 `;
 
 export const LeftArrow = styled(Link)`
@@ -126,6 +129,9 @@ export const LeftArrow = styled(Link)`
   background-position: 50% 50%;
   background-repeat: no-repeat;
   transform: rotate(180deg);
+  @media (max-width: 650px) {
+    display: none;
+  }
 `;
 
 export const Tooltip = styled.div`

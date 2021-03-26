@@ -22,7 +22,11 @@ const About = props => {
         alt=""
       />
 
-      <StickerWrapper>
+      <StickerWrapper
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.1 }}
+      >
         <StickerGrid>
           {props.softwares &&
             props.softwares.map(node => (
@@ -37,7 +41,11 @@ const About = props => {
         </StickerGrid>
       </StickerWrapper>
       <LeftArrow to="/work" />
-      <EducationGrid>
+      <EducationGrid
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.1 }}
+      >
         {props.education &&
           props.education.map(node => (
             <FramedPicture key={node.title} whileHover={{ scale: 1.05 }}>
@@ -78,7 +86,7 @@ const AboutPage = styled.div`
   overflow: hidden;
 `;
 
-const StickerWrapper = styled.div`
+const StickerWrapper = styled(motion.div)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -112,7 +120,7 @@ const Sticker = styled.div`
     transform: scale(1.1);
   }
 `;
-const EducationGrid = styled.div`
+const EducationGrid = styled(motion.div)`
   position: absolute;
   display: flex;
   flex-wrap: wrap;
