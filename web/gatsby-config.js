@@ -32,17 +32,13 @@ module.exports = {
         path: path.join(__dirname, `src`, `images`)
       }
     },
-    {
+    /*    {
       resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
-        fonts: [
-          { family: "Spartan" },
-          { family: "Mrs Saint Delafield" },
-          { family: "Recursive" }
-        ]
+        fonts: [{ family: "Spartan" }]
       }
-    }
-    /* {
+    } */
+    {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
@@ -52,6 +48,6 @@ module.exports = {
           families: ["Recursive"]
         }
       }
-    } */
+    }
   ]
 };
