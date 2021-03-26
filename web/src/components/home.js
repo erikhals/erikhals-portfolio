@@ -1,41 +1,53 @@
 import React from "react";
 import styled from "styled-components";
-import motion from "framer-motion";
+import { motion } from "framer-motion";
 import { Background, RightArrow } from "./layout";
 import Video from "sanity-mux-player";
 
-const Home = props => (
-  <HomePage>
-    <Background
-      fluid={props.background.childImageSharp.fluid}
-      style={{ backgroundPosition: "80% 50%" }}
-      alt=""
-    />
-    <RightArrow to="/work" />
-    <Greeting>
-      <h1>Erik Hals</h1>
-      <h2>Digital Designer</h2>
-      <p>{props.bio}</p>
-      <Button onClick={() => props.setShowreelopen(!props.showreelopen)}>
-        <span /> Showreel
-      </Button>
-    </Greeting>
-    {props.showreelopen && (
-      <ShowreelWrapper
-        onClick={() => props.setShowreelopen(!props.showreelopen)}
+const Home = props => {
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  };
+  return (
+    <HomePage>
+      <Background
+        fluid={props.background.childImageSharp.fluid}
+        style={{ backgroundPosition: "80% 50%" }}
+        alt=""
+      />
+
+      <Greeting
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        transition={{ duration: 1.3, delay: 0.1 }}
       >
-        <Showreel>
-          <Video
-            assetDocument={props.showreel}
-            autoload
-            autoplay={true}
-            showControls
-          />
-        </Showreel>
-      </ShowreelWrapper>
-    )}
-  </HomePage>
-);
+        <h1>Erik Hals</h1>
+        <h2>Digital Designer</h2>
+        <p>{props.bio}</p>
+        <Button onClick={() => props.setShowreelopen(!props.showreelopen)}>
+          <span /> Showreel
+        </Button>
+      </Greeting>
+      {props.showreelopen && (
+        <ShowreelWrapper
+          onClick={() => props.setShowreelopen(!props.showreelopen)}
+        >
+          <Showreel>
+            <Video
+              assetDocument={props.showreel}
+              autoload
+              autoplay={true}
+              showControls
+            />
+          </Showreel>
+        </ShowreelWrapper>
+      )}
+      <RightArrow to="/work" />
+    </HomePage>
+  );
+};
 
 const HomePage = styled.div`
   position: fixed;
@@ -45,7 +57,7 @@ const HomePage = styled.div`
   left: 0;
 `;
 
-const Greeting = styled.div`
+const Greeting = styled(motion.div)`
   position: absolute;
   top: 0;
   text-align: left;

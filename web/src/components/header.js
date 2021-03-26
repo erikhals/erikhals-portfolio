@@ -6,10 +6,7 @@ import Icon from "./icon";
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
   <HeaderRoot>
     <HeaderWrapper>
-      <ToggleNavButton onClick={() => (showNav ? onHideNav() : onShowNav())}>
-        <Icon symbol="hamburger" />
-      </ToggleNavButton>
-      <Nav showNav={showNav}>
+      <Nav>
         <ul>
           <li>
             <Link to="/" activeStyle={{ color: "#285684" }}>
@@ -60,55 +57,7 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const Branding = styled.div`
-  font-weight: 600;
-  font-size: 1.2rem;
-  flex: 1;
-
-  & a {
-    display: inline-block;
-    padding: 0.5em;
-    color: inherit;
-    text-decoration: none;
-    color: var(--color-black);
-
-    @media (hover: hover) {
-      &:hover {
-        color: var(--color-accent);
-      }
-    }
-  }
-`;
-
-const ToggleNavButton = styled.button`
-  appearance: none;
-  font-size: 25px;
-  border: none;
-  background: var(--color-accent);
-  margin: 0;
-  padding: calc(14 / 17 / 2 * 1rem);
-  outline: none;
-  color: inherit;
-  justify-self: end;
-  & svg {
-    display: block;
-    fill: inherit;
-  }
-
-  @media (min-width: 450px) {
-    display: none;
-  }
-`;
-
 const Nav = styled.nav`
-  ${props =>
-    props.showNav
-      ? css`
-          display: block;
-        `
-      : css`
-          display: none;
-        `}
   & ul {
     display: flex;
     justify-items: center;
@@ -121,6 +70,7 @@ const Nav = styled.nav`
   & ul li a {
     display: block;
     margin-left: 1em;
+    padding: 0.5em;
     color: var(--color-black);
     text-decoration: none;
   }
@@ -128,38 +78,6 @@ const Nav = styled.nav`
   @media (hover: hover) {
     & ul li a:hover {
       color: var(--color-accent);
-    }
-  }
-
-  @media (max-width: 449px) {
-    position: absolute;
-    background: var(--color-white);
-    color: var(--color-black);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    left: 0;
-    right: 0;
-    top: 4.3rem;
-
-    & ul {
-      padding: 1rem 0;
-    }
-
-    & ul li a {
-      padding: 0.5rem 1.5rem;
-    }
-  }
-
-  @media (min-width: 450px) {
-    display: block;
-
-    & ul {
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    & ul li a {
-      padding: 0.5rem;
     }
   }
 `;

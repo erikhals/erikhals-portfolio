@@ -99,12 +99,12 @@ export const NavButton = styled(Link)`
 `;
 
 export const RightArrow = styled(Link)`
-  position: absolute;
+  position: fixed;
   top: 45%;
   right: 3rem;
   width: 3rem;
   height: 3rem;
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-accent);
   border-radius: 50%;
   background-image: url("chevron-right.svg");
   background-size: 2rem;
@@ -113,12 +113,13 @@ export const RightArrow = styled(Link)`
 `;
 
 export const LeftArrow = styled(Link)`
-  position: absolute;
+  position: fixed;
   top: 45%;
   left: 3rem;
   width: 3rem;
   height: 3rem;
-  border: 2px solid var(--color-primary);
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
   border-radius: 50%;
   background-image: url("chevron-right.svg");
   background-size: 2rem;

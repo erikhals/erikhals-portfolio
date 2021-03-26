@@ -149,6 +149,10 @@ const SoftwareInfoBox = styled(motion.div)`
   & h2 {
     margin: 0;
   }
+  @media (max-width: 650px) {
+    width: 30ch;
+    margin-left: -15ch;
+  }
 `;
 
 export default About;

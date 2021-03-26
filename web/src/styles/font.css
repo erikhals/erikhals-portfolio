@@ -4,3 +4,10 @@
   font-weight: 300 800;
   font-style: normal;
 }
+@font-face {
+  font-family: "Mrs Saint Delafield";
+  src: local("Mrs Saint Delafield"),
+    url(./mrs-saint-delafield-v8-latin-regular.woff2) format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
