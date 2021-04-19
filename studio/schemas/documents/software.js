@@ -30,6 +30,7 @@ export default {
       name: 'link',
       type: 'url',
       title: 'Url'
-    }
+    },
+    { name: 'featured', title: 'Featured', type: 'boolean' }
   ]
 }
