@@ -1,4 +1,4 @@
-import MdComputer from 'react-icons/lib/md/computer'
+import { MdComputer } from 'react-icons/md'
 
 export default {
   name: 'software',
@@ -30,6 +30,12 @@ export default {
       name: 'link',
       type: 'url',
       title: 'Url'
+    },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: { type: 'category' }
     },
     { name: 'featured', title: 'Featured', type: 'boolean' }
   ]

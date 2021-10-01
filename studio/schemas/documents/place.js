@@ -1,4 +1,4 @@
-import MdStore from 'react-icons/lib/md/store'
+import { MdStore } from 'react-icons/md'
 
 export default {
   name: 'place',
