@@ -1,5 +1,5 @@
 import { format } from 'date-fns'
-import { MdInsertDriveFile } from 'react-icons/md'
+import MdInsertDriveFile from 'react-icons/lib/md/insert-drive-file'
 
 export default {
   name: 'project',

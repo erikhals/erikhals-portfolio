@@ -1,5 +1,5 @@
 import { format } from 'date-fns'
-import { MdSchool } from 'react-icons/md'
+import MdSchool from 'react-icons/lib/md/school'
 
 export default {
   name: 'education',

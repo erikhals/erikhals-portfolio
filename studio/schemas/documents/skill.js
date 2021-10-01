@@ -1,4 +1,4 @@
-import { MdLightbulb } from 'react-icons/md'
+import MdLightbulb from 'react-icons/lib/md/lightbulb-outline'
 
 export default {
   name: 'skill',

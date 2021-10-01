@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MdSettings } from 'react-icons/md'
+import MdSettings from 'react-icons/lib/md/settings'
 
 const hiddenDocTypes = listItem =>
   ![
