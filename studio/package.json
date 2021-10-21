@@ -38,6 +38,7 @@
     "sanity-plugin-dashboard-widget-document-list": "^0.0.8",
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
     "sanity-plugin-mux-input": "^0.2.1",
+    "styled-components": "^5.2.0",
     "webpack": "^4.43.0"
   },
   "devDependencies": {
