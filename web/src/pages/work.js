@@ -34,7 +34,12 @@ export const query = graphql`
     }
     projects: allSanityProject(
       sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      limit: 21
+      filter: {
+        slug: { current: { ne: null } }
+        publishedAt: { ne: null }
+        featured: { ne: false }
+      }
     ) {
       edges {
         node {

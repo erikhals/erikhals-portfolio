@@ -108,7 +108,8 @@ export default {
     {
       name: 'featured',
       title: 'Featured',
-      type: 'boolean'
+      type: 'boolean',
+      initialValue: 'false'
     }
   ],
   preview: {
