@@ -54,7 +54,7 @@ export const query = graphql`
         }
       }
     }
-    softwares: allSanitySoftware {
+    softwares: allSanitySoftware(filter: { featured: { ne: false } }) {
       edges {
         node {
           title

@@ -1,4 +1,4 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 import MdInsertDriveFile from 'react-icons/lib/md/insert-drive-file'
 
 export default {
@@ -26,7 +26,7 @@ export default {
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: {type: 'category'},
+      to: { type: 'category' },
       validation: Rule => Rule.error('You have to choose a category.').required()
     },
     {
@@ -80,19 +80,19 @@ export default {
       name: 'places',
       title: 'Places',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'place'}}]
+      of: [{ type: 'reference', to: { type: 'place' } }]
     },
     {
       name: 'skills',
       title: 'Skills',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'skill'}}]
+      of: [{ type: 'reference', to: { type: 'skill' } }]
     },
     {
       name: 'softwares',
       title: 'Softwares',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'software'}}]
+      of: [{ type: 'reference', to: { type: 'software' } }]
     },
     {
       name: 'body',
@@ -103,7 +103,12 @@ export default {
       name: 'relatedProjects',
       title: 'Related projects',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'project'}}]
+      of: [{ type: 'reference', to: { type: 'project' } }]
+    },
+    {
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean'
     }
   ],
   preview: {
@@ -113,7 +118,7 @@ export default {
       slug: 'slug',
       media: 'mainImage'
     },
-    prepare ({title = 'No title', publishedAt, slug = {}, media}) {
+    prepare({ title = 'No title', publishedAt, slug = {}, media }) {
       const dateSegment = format(publishedAt, 'YYYY/MM')
       const path = `/${dateSegment}/${slug.current}/`
       return {
