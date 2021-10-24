@@ -70,6 +70,7 @@ const Greeting = styled.div`
     margin-top: 0;
     margin-bottom: -0.5em;
     font-size: 64px;
+    cursor: default;
     @media screen and (min-width: 320px) {
       font-size: calc(64px + 64 * ((100vw - 320px) / 680));
     }
