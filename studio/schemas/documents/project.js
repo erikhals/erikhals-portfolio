@@ -109,7 +109,7 @@ export default {
       name: 'featured',
       title: 'Featured',
       type: 'boolean',
-      initialValue: 'false'
+      initialValue: false
     }
   ],
   preview: {
