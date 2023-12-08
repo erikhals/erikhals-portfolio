@@ -137,7 +137,7 @@ export const LeftArrow = styled(Link)`
     display: none;
   }
   :hover {
-    transform: translate(-1em, 0);
+    transform: translate(-1em, 0) rotate(180deg);
   }
 `;
 
