@@ -110,9 +110,12 @@ export const RightArrow = styled(Link)`
   background-size: 2rem;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  transition: transform .3s ease-out;
   @media (max-width: 650px) {
     display: none;
   }
+  :hover {
+    transform: translate(1em, 0);
 `;
 
 export const LeftArrow = styled(Link)`
@@ -128,9 +131,13 @@ export const LeftArrow = styled(Link)`
   background-size: 2rem;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  transition: transform .3s ease-out;
   transform: rotate(180deg);
   @media (max-width: 650px) {
     display: none;
+  }
+  :hover {
+    transform: translate(-1em, 0);
   }
 `;
 
