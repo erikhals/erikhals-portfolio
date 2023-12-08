@@ -104,7 +104,7 @@ export const RightArrow = styled(Link)`
   right: 3rem;
   width: 3rem;
   height: 3rem;
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--color-white);
   border-radius: 50%;
   background-image: url("chevron-right.svg");
   background-size: 2rem;
@@ -125,7 +125,7 @@ export const LeftArrow = styled(Link)`
   width: 3rem;
   height: 3rem;
   color: var(--color-accent);
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--color-white);
   border-radius: 50%;
   background-image: url("chevron-right.svg");
   background-size: 2rem;
