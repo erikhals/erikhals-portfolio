@@ -74,7 +74,7 @@ const Greeting = styled.div`
     span {
       font-size: 46px;
       font-weight: 300;
-      vertical-align: 20%;
+      vertical-align: 10%;
     }
     @media screen and (min-width: 320px) {
       font-size: calc(64px + 64 * ((100vw - 320px) / 680));
