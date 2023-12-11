@@ -66,13 +66,15 @@ const Greeting = styled.div`
     font-family: "Mrs Saint Delafield";
     color: var(--color-accent);
     filter: drop-shadow(0.1rem 0.1rem 0.1rem rgb(0, 0, 0, 0.5));
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 0;
     margin-bottom: -0.5em;
     font-size: 64px;
     cursor: default;
     span {
       font-size: 46px;
+      font-weight: 300;
+      vertical-align: 20%;
     }
     @media screen and (min-width: 320px) {
       font-size: calc(64px + 64 * ((100vw - 320px) / 680));
