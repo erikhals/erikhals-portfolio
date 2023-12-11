@@ -17,7 +17,7 @@ const Home = props => {
       />
 
       <Greeting>
-        <h1>Erik Hals</h1>
+        <h1>E<span>rik</span> H<span>als</span></h1>
         <h2>Digital Designer</h2>
         <p>{props.bio}</p>
         <Button onClick={() => props.setShowreelopen(!props.showreelopen)}>
@@ -71,11 +71,20 @@ const Greeting = styled.div`
     margin-bottom: -0.5em;
     font-size: 64px;
     cursor: default;
+    span {
+      font-size: 46px;
+    }
     @media screen and (min-width: 320px) {
       font-size: calc(64px + 64 * ((100vw - 320px) / 680));
+      span {
+        font-size: calc(46px + 46 * ((100vw - 320px) / 680));
+      }
     }
     @media screen and (min-width: 1440px) {
       font-size: 240px;
+      span {
+        font-size: 160px;
+      }
     }
   }
   & h2 {
