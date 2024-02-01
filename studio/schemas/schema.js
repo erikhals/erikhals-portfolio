@@ -13,6 +13,7 @@ import education from './documents/education'
 import siteSettings from './documents/siteSettings'
 import category from './documents/category'
 import software from './documents/software'
+import customer from './documents/customer'
 
 // Object types
 import bioPortableText from './objects/bioPortableText'
@@ -46,6 +47,7 @@ export default createSchema({
     education,
     siteSettings,
     category,
-    software
+    software,
+    customer
   ])
 })
