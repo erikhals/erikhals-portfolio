@@ -1,7 +1,7 @@
 import React from 'react'
 import getYouTubeID from 'get-youtube-id'
 
-const YoutubePreview = ({value}) => {
+const YoutubePreview = ({ value }) => {
   const id = getYouTubeID(value.url)
   const url = `https://www.youtube.com/embed/${id}`
   if (!id) {
@@ -33,7 +33,6 @@ export default {
   preview: {
     select: {
       url: 'url'
-    },
-    component: YoutubePreview
+    }
   }
 }

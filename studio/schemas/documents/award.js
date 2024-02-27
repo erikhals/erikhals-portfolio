@@ -1,10 +1,10 @@
-import { MdSentimentSatisfiedAlt } from 'react-icons/md'
+import { MdOutlineEmojiEvents } from 'react-icons/md'
 
 export default {
-  name: 'customer',
+  name: 'award',
   type: 'document',
-  title: 'Customer',
-  icon: MdSentimentSatisfiedAlt,
+  title: 'Award',
+  icon: MdOutlineEmojiEvents,
   fields: [
     {
       name: 'name',
@@ -12,19 +12,19 @@ export default {
       title: 'Name'
     },
     {
+      name: 'award',
+      type: 'string',
+      title: 'Award'
+    },
+    {
       name: 'logo',
       type: 'image',
-      title: 'Logo'
+      title: 'Symbol'
     },
     {
       name: 'description',
       type: 'text',
       title: 'Description'
-    },
-    {
-      name: 'featured',
-      type: 'boolean',
-      title: 'Featured'
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "erik-hals-portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Erik Hals <post@erikhals.com>",
   "scripts": {
     "build": "gatsby build",

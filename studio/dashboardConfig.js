@@ -1,6 +1,6 @@
 export default {
   widgets: [
-    {name: 'structure-menu'},
+    { name: 'structure-menu' },
     {
       name: 'project-info',
       options: {
@@ -41,11 +41,11 @@ export default {
         ]
       }
     },
-    {name: 'project-users', layout: {height: 'auto'}},
+    { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',
-      options: {title: 'Recent projects', order: '_createdAt desc', types: ['project']},
-      layout: {width: 'medium'}
+      options: { title: 'Recent projects', order: '_createdAt desc', types: ['project'] },
+      layout: { width: 'medium' }
     }
   ]
 }
