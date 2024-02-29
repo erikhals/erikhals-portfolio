@@ -1,52 +1,43 @@
 {
+  "name": "erik-hals-portfolio",
   "private": true,
-  "name": "sanity-gatsby-portfolio-studio",
-  "version": "2.0.1",
+  "version": "1.0.0",
   "main": "package.json",
-  "author": "Sanity <hello@sanity.io>",
+  "license": "UNLICENSED",
   "scripts": {
-    "start": "sanity start",
     "dev": "sanity dev",
-    "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
+    "start": "sanity start",
     "build": "sanity build",
-    "graphql-deploy": "sanity graphql deploy --playground --generation gen2",
-    "lint": "eslint .",
-    "test": "sanity check"
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy"
   },
+  "keywords": [
+    "sanity"
+  ],
   "dependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/runtime": "^7.9.6",
-    "@sanity/cli": "^3.30.0",
-    "@sanity/dashboard": "^3.1.6",
-    "@sanity/vision": "^3.30.0",
-    "@types/react": "^16.9.35",
-    "date-fns": "^1.30.1",
-    "eslint-config-prettier": "^6.10.0",
+    "@sanity/vision": "^3.30.1",
     "get-youtube-id": "^1.0.1",
-    "mem": "^6.1.0",
-    "minimist": "^1.2.5",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "sanity": "^3.30.0",
+    "react-is": "^18.2.0",
+    "sanity": "^3.30.1",
     "sanity-plugin-dashboard-widget-document-list": "^1.0.1",
     "sanity-plugin-dashboard-widget-netlify": "^2.0.1",
     "sanity-plugin-mux-input": "^2.2.4",
-    "styled-components": "^5.2.0",
-    "webpack": "^4.43.0"
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-config-standard-react": "^7.0.2",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^9.0.1",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-react": "^7.13.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "prettier-eslint-cli": "^5.0.0"
+    "@sanity/eslint-config-studio": "^3.0.1",
+    "@types/react": "^18.0.25",
+    "eslint": "^8.6.0",
+    "prettier": "^3.0.2",
+    "typescript": "^5.1.6"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
   }
 }
