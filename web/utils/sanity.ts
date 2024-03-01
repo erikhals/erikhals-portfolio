@@ -1,5 +1,5 @@
-import { sanityClient } from "sanity:client";
-import type { PortableTextBlock } from "@portabletext/types";
+import { sanityClient } from "sanity:client"
+import type { PortableTextBlock } from "@portabletext/types"
 import type { ImageAsset, Slug } from "@sanity/types";
 import groq from "groq";
 
@@ -23,6 +23,7 @@ export interface Project {
   _createdAt: string;
   title?: string;
   slug: Slug;
+  role?: string;
   excerpt?: string;
   mainImage?: ImageAsset;
   body: PortableTextBlock[];
