@@ -1,0 +1,11 @@
+---
+import { sanityClient } from 'sanity:client'
+
+const projects = await sanityClient.fetch(`*[_type == "project"]`)
+---
+
+{projects && <ul>
+  {projects.map((project) => (
+    <li><a href={project.slug.current}>{project.title}</a></li>
+  ))}
+  </ul>}

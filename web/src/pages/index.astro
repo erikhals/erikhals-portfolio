@@ -1,7 +1,5 @@
 ---
-import {sanityClient} from 'sanity:client'
-
-const projects = await sanityClient.fetch(`*[_type == "project"]`)
+import NavMenu from '../../components/NavMenu.astro'
 ---
 
 <html lang="en">
@@ -13,11 +11,7 @@ const projects = await sanityClient.fetch(`*[_type == "project"]`)
 		<title>Erik Hals</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
-    {projects && <ul>
-      {projects.map((project) => (
-        <li><a href={project.slug.current}>{project.title}</a></li>
-      ))}
-      </ul>}
+		<h1>ERIK HALS</h1>
+    <NavMenu />
 	</body>
 </html>
