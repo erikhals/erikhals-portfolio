@@ -1,7 +1,9 @@
 ---
-import type { InferGetStaticParamsType } from 'astro'
 import { getProjects, getProject } from '../../utils/sanity'
 import PortableText from '../../components/PortableText.astro'
+import MainImage from '../../components/MainImage.astro'
+import { ProjectsClient } from '@sanity/client';
+import { urlForImage } from '../../utils/urlForImage';
 
 export async function getStaticPaths() {
   const projects = await getProjects()
@@ -15,11 +17,22 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params
-const { title, role, body } = Astro.props
+const { title, role, mainImage, body } = Astro.props
 
 
 ---
 
 <h1>{title}</h1>
+{
+   mainImage ? (
+      <img
+        class="card__cover"
+        src={urlForImage(mainImage).width(500).height(300).url()}
+        alt="Cover image"
+      />
+    ) : (
+      <div class="card__cover--none" />
+    )
+}
 <p>{role}</p>
 <PortableText portableText={body} />
