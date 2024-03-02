@@ -1,17 +1,18 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro'
 import NavMenu from '../../components/NavMenu.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Erik Hals</title>
-	</head>
-	<body>
+<BaseLayout title="Home Page" url="http://erikhals.com">
 		<h1>ERIK HALS</h1>
     <NavMenu />
-	</body>
-</html>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 2em;
+  }
+
+</style>

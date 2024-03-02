@@ -62,12 +62,12 @@ h1 {
   transition: all .5s ease-in-out;
 }
 
-wrapper:hover > .button:hover {
+wrapper:hover > .button:hover , wrapper:focus-within > .button:focus-within{
   opacity: 1;
   letter-spacing: 0.2em;
 }
 
-wrapper:hover > .button:hover > span {
+wrapper:hover > .button:hover > span, wrapper:focus-within > .button:focus-within > span {
   opacity: 1;
   padding: 0 .5em;
   letter-spacing: 0.2em;
