@@ -17,11 +17,11 @@ export async function getProject(slug: string): Promise<Project> {
     }
   );
 }
-
 export interface Project {
   _type: "project";
   _createdAt: string;
   title?: string;
+  category: string;
   slug: Slug;
   role?: string;
   excerpt?: string;

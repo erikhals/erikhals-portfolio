@@ -1,16 +1,28 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
+import MainMenu from '../../components/MainMenu.astro'
 const { title, url } = Astro.props
 ---
 <html lang="en">
+
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={new URL(url, Astro.site).pathname} />
+    <link rel="canonical" href={new URL(`http://erikhals.com${url}`, Astro.site).pathname} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+    <ViewTransitions />
 	</head>
-	  <body>
-      <slot />
+	  <body >
+      <a href="/">Erik Hals</a>
+      <MainMenu category={url}/>
+      <main transition:animate="slide">
+        <slot/>
+      </main>
     </body>
   </html>
+
+  <style>
+
+  </style>

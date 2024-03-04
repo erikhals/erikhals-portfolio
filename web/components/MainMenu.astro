@@ -1,0 +1,74 @@
+---
+const { category } = Astro.props
+---
+
+<nav transition:name="navmenu">
+  <ul class="mainmenu">
+    <li><a href="/creativedirection" class=`button ${category && (category == "/creativedirection" ? "active" : "inactive")}`>Creative<span> Direction</span></a></li>
+    <li><a href="/visualeffects" class=`button ${category && (category == "/visualeffects" ? "active" : "inactive")}`>Visual<span> Effects</span></a></li>
+    <li><a href="/digitaldesign" class=`button ${category && (category == "/digitaldesign" ? "active" : "inactive")}`><span>Digital </span>Design</a></li>
+  </ul>
+</nav>
+
+<style>
+* {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  text-decoration: none;
+  font-family: helvetica neue, helvetica, arial, sans-serif;
+  font-smooth: always;
+}
+.mainmenu {
+   display: flex;
+   justify-content: center;
+   list-style: none;
+   margin: 50px auto;
+   width: 100%;
+   text-align: center;
+}
+
+@media screen and (max-width:768px) {
+  .mainmenu {
+    flex-direction: column;
+  }
+  }
+
+.mainmenu:hover .button, .mainmenu:focus-within .button, .mainmenu .inactive  {
+  opacity: 0.2;
+}
+
+.mainmenu:hover .button, .mainmenu:focus-within .button, .mainmenu .inactive  {
+  letter-spacing: -4px;
+}
+
+.button {
+   display: inline-block;
+   border: none;
+   margin: 0;
+   font-weight: 200;
+   font-size: 2em;
+   text-transform: uppercase;
+   cursor: pointer;
+   letter-spacing: normal;
+   transition: all .5s ease-in-out;
+}
+
+
+.button span,  .mainmenu:hover .active:not(:hover) span,  .mainmenu:focus-within .active:not(:focus-within) span {
+  opacity: 0;
+  letter-spacing: -.5em;
+  transition: all .5s ease-in-out;
+}
+
+.mainmenu .active, .mainmenu:hover .button:hover, .mainmenu:focus-within .button:focus-within {
+  opacity: 1;
+  letter-spacing: 0.2em;
+}
+
+.active span, .button:hover span, .button:focus-within span {
+  opacity: 1;
+  margin-left: 0;
+  letter-spacing: 0.2em;
+}
+</style>

@@ -1,4 +1,20 @@
 ---
+import { sanityClient } from 'sanity:client'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { type Project } from '../../utils/sanity'
+
+const category = await sanityClient.fetch(`*[_type == "category" && title == "Creative Direction"][0]{
+  _id, title,
+  "projects": *[_type == "project" && references(^._id) && featured == true]
+} `)
 
 ---
-<h1>Creative Direction</h1>
+<BaseLayout title="Erik Hals - Creative Direction" url="/creativedirection">
+
+{ category.projects && <ul>
+  { category.projects.map((project: Project) => (
+    <li><a href={project.slug.current}>{project.title}</a></li>
+  ))}
+  </ul>
+}
+</BaseLayout>

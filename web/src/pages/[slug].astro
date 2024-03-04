@@ -2,8 +2,8 @@
 import { getProjects, getProject } from '../../utils/sanity'
 import PortableText from '../../components/PortableText.astro'
 import MainImage from '../../components/MainImage.astro'
-import { ProjectsClient } from '@sanity/client';
 import { urlForImage } from '../../utils/urlForImage';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const projects = await getProjects()
@@ -17,11 +17,11 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params
-const { title, role, mainImage, body } = Astro.props
-
+const { title, category, role, mainImage, body } = Astro.props
+console.log(category)
 
 ---
-
+<BaseLayout url=`/${slug}`>
 <h1>{title}</h1>
 {
    mainImage ? (
@@ -36,3 +36,4 @@ const { title, role, mainImage, body } = Astro.props
 }
 <p>{role}</p>
 <PortableText portableText={body} />
+</BaseLayout>

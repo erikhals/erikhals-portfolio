@@ -1,11 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import NavMenu from '../../components/NavMenu.astro'
+
 ---
 
-<BaseLayout title="Home Page" url="http://erikhals.com">
-		<h1>ERIK HALS</h1>
-    <NavMenu />
+<BaseLayout title="Erik Hals - Home" url="">
+		<h1>Clients</h1>
 </BaseLayout>
 
 <style>
@@ -13,6 +12,10 @@ import NavMenu from '../../components/NavMenu.astro'
     font-family: sans-serif;
     font-weight: 400;
     font-size: 2em;
+  }
+
+  NavMenu {
+    height: 100%;
   }
 
 </style>
