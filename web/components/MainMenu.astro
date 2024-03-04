@@ -2,11 +2,11 @@
 const { category } = Astro.props
 ---
 
-<nav transition:name="navmenu">
+<nav >
   <ul class="mainmenu">
-    <li><a href="/creativedirection" class=`button ${category && (category == "/creativedirection" ? "active" : "inactive")}`>Creative<span> Direction</span></a></li>
-    <li><a href="/visualeffects" class=`button ${category && (category == "/visualeffects" ? "active" : "inactive")}`>Visual<span> Effects</span></a></li>
-    <li><a href="/digitaldesign" class=`button ${category && (category == "/digitaldesign" ? "active" : "inactive")}`><span>Digital </span>Design</a></li>
+    <li ><a href="/creativedirection" class=`button ${category && (category == "/creativedirection" ? "active" : "inactive")}`>Creative<span> Direction</span></a></li>
+    <li ><a href="/visualeffects" class=`button ${category && (category == "/visualeffects" ? "active" : "inactive")}`>Visual<span> Effects</span></a></li>
+    <li ><a href="/digitaldesign" class=`button ${category && (category == "/digitaldesign" ? "active" : "inactive")}`><span>Digital </span>Design</a></li>
   </ul>
 </nav>
 
@@ -26,6 +26,7 @@ const { category } = Astro.props
    margin: 50px auto;
    width: 100%;
    text-align: center;
+   transition: all .5s ease-in-out;
 }
 
 @media screen and (max-width:768px) {
