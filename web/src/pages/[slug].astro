@@ -26,14 +26,37 @@ console.log(category)
 {
    mainImage ? (
       <img
+        transition:name={title}
         class="card__cover"
         src={urlForImage(mainImage).width(500).height(300).url()}
-        alt="Cover image"
+        alt={mainImage.description}
       />
     ) : (
       <div class="card__cover--none" />
     )
 }
 <p>{role}</p>
-<PortableText portableText={body} />
+<article>
+  <PortableText portableText={body} />
+</article>
+
 </BaseLayout>
+
+<style>
+  .card__cover {
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  article {
+    position: relative;
+    width: 70%;
+    background-color: none;
+  }
+
+</style>

@@ -14,9 +14,13 @@ const { title, url } = Astro.props
 		<title>{title}</title>
     <ViewTransitions />
 	</head>
-	  <body >
-      <a href="/">Erik Hals</a>
-      <MainMenu category={url}/>
+	  <body>
+      <nav>
+        <a href="/">Erik Hals</a>
+        <MainMenu category={url}/>
+        <a href="/" class="right">Contact</a>
+      </nav>
+
       <main transition:animate="slide">
         <slot/>
       </main>
@@ -24,5 +28,38 @@ const { title, url } = Astro.props
   </html>
 
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: sans-serif;
+      margin: 0;
+    }
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
 
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+    nav {
+      display: flex;
+      width: 100%;
+    }
+    nav a{
+      font-family: sans-serif;
+      color: #000;
+      text-decoration: none;
+      width: 50%;
+    }
+
+    .right{
+      text-align: right;
+    }
   </style>

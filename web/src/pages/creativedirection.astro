@@ -2,6 +2,7 @@
 import { sanityClient } from 'sanity:client'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { type Project } from '../../utils/sanity'
+import { urlForImage } from '../../utils/urlForImage'
 
 const category = await sanityClient.fetch(`*[_type == "category" && title == "Creative Direction"][0]{
   _id, title,
@@ -10,11 +11,26 @@ const category = await sanityClient.fetch(`*[_type == "category" && title == "Cr
 
 ---
 <BaseLayout title="Erik Hals - Creative Direction" url="/creativedirection">
-
-{ category.projects && <ul>
-  { category.projects.map((project: Project) => (
-    <li><a href={project.slug.current}>{project.title}</a></li>
-  ))}
-  </ul>
-}
+  { category.projects && <ul>
+    { category.projects.map((project: Project) => (
+      <li>
+        <a href={project.slug.current}>
+            {project.title}
+            {
+              project.mainImage ? (
+              <img
+              transition:name={project.title}
+              class="card__cover"
+              src={urlForImage(project.mainImage).width(500).height(300).url()}
+              alt="Cover image"
+              />
+            ) : (
+              <div class="card__cover--none" />
+            )
+          }
+        </a>
+      </li>
+    ))}
+    </ul>
+  }
 </BaseLayout>

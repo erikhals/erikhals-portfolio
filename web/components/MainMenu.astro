@@ -2,13 +2,11 @@
 const { category } = Astro.props
 ---
 
-<nav >
-  <ul class="mainmenu">
-    <li ><a href="/creativedirection" class=`button ${category && (category == "/creativedirection" ? "active" : "inactive")}`>Creative<span> Direction</span></a></li>
-    <li ><a href="/visualeffects" class=`button ${category && (category == "/visualeffects" ? "active" : "inactive")}`>Visual<span> Effects</span></a></li>
-    <li ><a href="/digitaldesign" class=`button ${category && (category == "/digitaldesign" ? "active" : "inactive")}`><span>Digital </span>Design</a></li>
-  </ul>
-</nav>
+<ul class="mainmenu">
+  <li ><a href="/creativedirection" class=`button ${category && (category == "/creativedirection" ? "active" : "inactive")}`>Creative<span> Direction</span></a></li>
+  <li ><a href="/visualeffects" class=`button ${category && (category == "/visualeffects" ? "active" : "inactive")}`>Visual<span> Effects</span></a></li>
+  <li ><a href="/digitaldesign" class=`button ${category && (category == "/digitaldesign" ? "active" : "inactive")}`><span>Digital </span>Design</a></li>
+</ul>
 
 <style>
 * {
@@ -17,13 +15,13 @@ const { category } = Astro.props
   outline: none;
   text-decoration: none;
   font-family: helvetica neue, helvetica, arial, sans-serif;
+  z-index: 50;
   font-smooth: always;
 }
 .mainmenu {
    display: flex;
    justify-content: center;
    list-style: none;
-   margin: 50px auto;
    width: 100%;
    text-align: center;
    transition: all .5s ease-in-out;
